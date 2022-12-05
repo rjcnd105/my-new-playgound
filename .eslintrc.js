@@ -10,6 +10,11 @@ module.exports = {
       "./packages/*/tsconfig.json",
     ],
   },
+  env: {
+    node: true,
+    jest: true,
+  },
+  ignorePatterns: ['.eslintrc.js'], // !!! new and important part !!!
   plugins: ["@typescript-eslint"],
   extends: ["plugin:@typescript-eslint/recommended"],
 };
