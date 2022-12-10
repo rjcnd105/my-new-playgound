@@ -1,6 +1,10 @@
 {
   "extends": "../../tsconfig.json",
 
+  "compilerOptions": {
+    "disableSizeLimit": true,
+    "declaration": false
+  },
   "include": [
     "src/**/*"
   ]

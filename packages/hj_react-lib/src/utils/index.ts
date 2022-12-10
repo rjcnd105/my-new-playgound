@@ -1,14 +1,14 @@
-import type { RefObject } from 'react';
+import type { RefObject } from "react";
 
 export function inputChangeTrigger(el: HTMLInputElement, newValue: string) {
   Object.getOwnPropertyDescriptor(
     HTMLInputElement.prototype,
-    'value',
+    "value",
   )?.set?.call(el, newValue);
-  el.dispatchEvent(new Event('change', { bubbles: true }));
+  el.dispatchEvent(new Event("change", { bubbles: true }));
 }
 
-type PosT = 'top' | 'center' | 'bottom';
+type PosT = "top" | "center" | "bottom";
 
 type ScrollOpt = {
   smooth: boolean;
@@ -17,12 +17,12 @@ type ScrollOpt = {
 };
 const defaultScrollOpt: ScrollOpt = {
   smooth: false,
-  position: 'top',
+  position: "top",
   extraValue: 0,
 };
 
 export function getPositionValue(
-  position: ScrollOpt['position'],
+  position: ScrollOpt["position"],
   {
     scrollSize,
     elTop,
@@ -30,19 +30,19 @@ export function getPositionValue(
   }: { scrollSize: number; elTop: number; elSize: number },
 ) {
   switch (position) {
-    case 'top':
+    case "top":
       return elTop;
-    case 'center':
+    case "center":
       return elTop - scrollSize / 2 + elSize / 2;
-    case 'bottom':
+    case "bottom":
       return elTop - scrollSize + elSize;
   }
 }
 
 function getPositionY(
-  position: ScrollOpt['position'],
-  scrollEl: Pick<HTMLElement, 'offsetHeight'>,
-  el: Pick<HTMLElement, 'offsetTop' | 'offsetHeight'>,
+  position: ScrollOpt["position"],
+  scrollEl: Pick<HTMLElement, "offsetHeight">,
+  el: Pick<HTMLElement, "offsetTop" | "offsetHeight">,
 ) {
   return getPositionValue(position, {
     scrollSize: scrollEl.offsetHeight,
@@ -52,13 +52,13 @@ function getPositionY(
 }
 
 export function removeHTMLTag(str: string) {
-  return str.replace(/<[^>]+>/g, '');
+  return str.replace(/<[^>]+>/g, "");
 }
 
 type ElementT = string | RefObject<HTMLElement>;
 
 export function getEl(el: ElementT) {
-  return typeof el === 'string'
+  return typeof el === "string"
     ? document.querySelector<HTMLElement>(el)
     : el.current;
 }
@@ -82,20 +82,20 @@ export function scrollToY(
 
   smooth
     ? scrollEl.scrollTo({
-      behavior: 'smooth',
-      top: positionValue,
-    })
+        behavior: "smooth",
+        top: positionValue,
+      })
     : (scrollEl.scrollTop = positionValue);
 }
 
 export const onEnter =
   (fn: React.KeyboardEventHandler<HTMLInputElement>) =>
-    (e: React.KeyboardEvent<HTMLInputElement>) => {
-      if (e.key === 'Enter' && !e.nativeEvent.isComposing) {
-        e.preventDefault();
-        return fn(e);
-      }
-    };
+  (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && !e.nativeEvent.isComposing) {
+      e.preventDefault();
+      return fn(e);
+    }
+  };
 
 export function elementOnceInterval<E>(
   findElFn: () => E,

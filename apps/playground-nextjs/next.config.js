@@ -1,10 +1,19 @@
+const { pipe } = require("fp-ts/function");
+const {
+  createVanillaExtractPlugin
+} = require('@vanilla-extract/next-plugin');
+
 //** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   experimental: {
-    appDir: true
-  }
-}
+    appDir: true,
+    // plugins: ["swc-plugin-vanilla-extract", { }],
+  },
+};
 
-module.exports = nextConfig
+
+const withVanillaExtract = createVanillaExtractPlugin({devMode: true});
+
+module.exports = withVanillaExtract(nextConfig)
