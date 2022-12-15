@@ -2,6 +2,8 @@ import React from "react";
 import * as Accordion from "@radix-ui/react-accordion";
 import "./styles.css";
 import { AccordionHeaderTriggerProps } from "./types";
+import clsx from "clsx";
+import { fromOrigin } from "../../../src/lib/DerivedComponent";
 
 const AccordionDemo = () => (
   <Accordion.Root
@@ -53,16 +55,19 @@ const AccordionTrigger = React.forwardRef<
   ),
 );
 
-const AccordionContent = React.forwardRef(
-  ({ children, className, ...props }, forwardedRef) => (
-    <Accordion.Content
-      className={classNames("AccordionContent", className)}
-      {...props}
-      ref={forwardedRef}
-    >
-      <div className="AccordionContentText">{children}</div>
-    </Accordion.Content>
-  ),
-);
+const a = fromOrigin(Accordion.Root)();
+
+const AccordionContent = React.forwardRef<
+  HTMLDivElement,
+  Accordion.AccordionContentProps
+>(({ children, className, ...props }, forwardedRef) => (
+  <Accordion.Content
+    className={clsx("AccordionContent", className)}
+    {...props}
+    ref={forwardedRef}
+  >
+    <div className="AccordionContentText">{children}</div>
+  </Accordion.Content>
+));
 
 export default AccordionDemo;

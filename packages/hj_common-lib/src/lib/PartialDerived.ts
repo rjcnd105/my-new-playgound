@@ -1,41 +1,36 @@
-import { UnknownRecord } from "type-fest/source/internal";
-import { MergeDeep, PartialDeep } from "type-fest";
 import { ExceptForDeepComparison } from "../types/ExceptForDeepComparison";
-import { deepMerge } from "../utils/recordUtils/deepMerge";
-import { flow } from "fp-ts/function";
+import { PartialDeepProps } from "../types/utilityTypes";
+import { DeepMerge, deepMerge } from "../utils/recordUtils/recordDeepMerge";
 
-const target = Symbol("target");
+export const target = Symbol("target");
 
-export interface PartialDerived<
-  A extends UnknownRecord = UnknownRecord,
-  B extends PartialDeep<A> | {} = {},
-> {
+export interface PartialDerived<A, B extends PartialDeepProps<A> | {} = {}> {
   readonly [target]: A;
   readonly derived: B;
 }
 
-type GetTarget<P> = P extends PartialDerived<infer A, {}> ? A : never;
-type GetDerived<P> = P extends PartialDerived<{}, infer B> ? B : never;
+export type GetTarget<P> = P extends PartialDerived<infer A, {}> ? A : never;
+export type GetDerived<P> = P extends PartialDerived<unknown, infer B>
+  ? B
+  : never;
 
-type Do<T extends UnknownRecord> = PartialDerived<T, {}>;
+type Do<T> = PartialDerived<T, {}>;
 
-export const Do = <A extends UnknownRecord>(): Do<A> => ({
+export const Do = <A>(): Do<A> => ({
   [target]: {} as A,
   derived: {},
 });
 
 export const of =
-  <A extends UnknownRecord>() =>
-  <B extends PartialDeep<A>>(partial: B): PartialDerived<A, B> => ({
+  <A>() =>
+  <B extends PartialDeepProps<A>>(partial: B): PartialDerived<A, B> => ({
     [target]: {} as A,
     derived: partial,
   });
 
 export const changeDerived =
-  <T extends UnknownRecord, A extends PartialDeep<T>>(
-    partialDerived: PartialDerived<T, A>,
-  ) =>
-  <B extends PartialDeep<T>>(
+  <T, A extends PartialDeepProps<T>>(partialDerived: PartialDerived<T, A>) =>
+  <B extends PartialDeepProps<T>>(
     chainDerivedFn: (partialDerived: A) => B,
   ): PartialDerived<T, B> => ({
     [target]: partialDerived[target],
@@ -43,10 +38,11 @@ export const changeDerived =
   });
 
 export const derive =
-  <T extends UnknownRecord, A extends PartialDeep<T>>(
-    partialImpl: PartialDerived<T, A>,
+  <T, A extends PartialDeepProps<T>>(partialImpl: PartialDerived<T, A>) =>
+  <DA extends PartialDeepProps<ExceptForDeepComparison<T, A, false>>>(
+    except: DA,
   ) =>
-  <DA extends Partial<ExceptForDeepComparison<T, A, false>>>(except: DA) => ({
-    [target]: partialImpl[target],
-    derived: deepMerge(partialImpl.derived as MergeDeep<A, DA>, except),
-  });
+    ({
+      [target]: partialImpl[target],
+      derived: deepMerge(partialImpl.derived, except),
+    } as unknown as PartialDerived<T, DeepMerge<[A, DA]>>);

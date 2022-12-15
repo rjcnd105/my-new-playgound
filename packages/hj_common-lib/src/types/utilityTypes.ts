@@ -1,5 +1,7 @@
 // object 값들의 타입을 추출
 // M 에 N 타입 덮어쓰기
+import { PartialDeep } from "type-fest";
+
 export type Merge<M, N> = Omit<M, Extract<keyof M, keyof N>> & N;
 
 export type Writeable<T> = { -readonly [P in keyof T]: T[P] };
@@ -76,3 +78,5 @@ export type IterToTuple<I> = I extends Iterator<infer K> ? [...[K]] : never;
 export type OmitNever<T> = {
   [K in keyof T as T[K] extends never ? never : K]: T[K];
 };
+
+export type PartialDeepProps<P> = PartialDeep<P> | Partial<P> | {};
