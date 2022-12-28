@@ -1,0 +1,24 @@
+#stroke-linecap {
+    &:hover {
+        > * {
+            transition: .4s all;
+        }
+        #p1{
+            stroke-linecap: butt;
+            stroke-linejoin: miter;
+        }
+        #p2{
+            stroke-linecap: square;
+            stroke-linejoin: bevel;
+        }
+        #p3{
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+    }
+}
+
+svg {
+    margin: 8px;
+    border: 1px solid #444;
+}
