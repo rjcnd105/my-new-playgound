@@ -5,13 +5,14 @@ OOP의 클래스랑은 전혀 다른 용어이다. 타입 클래스는 ad hoc(�
 타입클래스의 인스턴스는 OOP의 인스턴스와는 다른 말이다. 
 여기에서의 인스턴스는 어디까지나 위에서 정의한 것 같은 타입클래스를 어느 형태에 대해서 구상화한 것이라고 생각해 주었으면 한다. 
 
-### 용어 (목차)
-<font size="2" color="#888">용어의 코드는 전부 example</font>
+### 목차 설명
+<font size="2" color="#888">여기서의 코드는 전부 example</font>
 
 **constructors:** 다른 타입클래스에서 해당 타입클래스로의 변환, 또는 lifting(pure value에서 타입클래스로 변환)  ```B<A> -> F<A>```, ```A -> F<A>```  
 **combinators:** 타입클래스 내 타입 결합자  ```F<A> + F<B> -> F<A | B>```  
 **destructors:** 타입클래스 유형 반환자 ```F<A> -> A```  
 **instances:** 타입클래스의 특징적인 함수들
+
 
 ---
 ### 타입클래스
@@ -143,6 +144,7 @@ T: ```R -> () -> Promise<Either<E, A>>```
 **T:** Transformer의 약어. 모나드 변환기를 의미. 그러나 sequenceT에서의 T는 Tuple을 의미한다.     
 **E:** Effect의 약어. 함수형 프로그래밍에서의 Effect는 모델링된 값을 의미한다. 즉 T가 F&lt;T&gt;처럼 F라는 모델링안에 감싸여져 있는 것을 말함. [참고](https://www.reddit.com/r/hascalator/comments/ald8qs/what_is_functional_effect/)  
 **C:** Constrained의 약어. 제약을 의미함.
+
 ```typescript
 const getFunctor = <E>(S: Semigroup<E>): Functor2C<"Validation", E> = { ... }
 // Validation은 실패 부분에 대해 Semigroup 인스턴스를 제공하는 경우에만 Functor 인스턴스를 허용한다.

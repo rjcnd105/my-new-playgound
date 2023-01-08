@@ -8,7 +8,7 @@ export default {
    * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
    * to learn how to generate automatic titles
    */
-  title: "d3-basic",
+  title: "d3-basic/basic",
 };
 
 export const Selector = () => {

@@ -1,7 +1,7 @@
 import * as d3 from "d3";
 
 export default {
-  title: "d3-scale",
+  title: "d3-basic/scale",
 };
 
 // scale Linear

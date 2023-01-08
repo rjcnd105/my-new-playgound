@@ -2,7 +2,7 @@ import { ExceptForDeepComparison } from "../types/ExceptForDeepComparison";
 import { PartialDeepProps } from "../types/utilityTypes";
 import { DeepMerge, deepMerge } from "../utils/recordUtils/recordDeepMerge";
 
-export const target = Symbol("target");
+export const target = Symbol.for("target");
 
 export interface PartialDerived<A, B extends PartialDeepProps<A> | {} = {}> {
   readonly [target]: A;
