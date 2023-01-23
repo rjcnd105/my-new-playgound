@@ -1,0 +1,23 @@
+.line-ranking-contents text {
+
+    font-weight: bold;
+    text-anchor: start;
+    dominant-baseline: middle;
+}
+
+.line-ranking-contents.invisible line, .line-ranking-contents.invisible circle, .line-ranking-contents.invisible text {
+    transition: .1s all;
+    filter: blur(1px);
+    opacity: .5;
+    cursor: pointer;
+}
+
+.line-ranking-contents.invisible .active-group line, .line-ranking-contents.invisible .active-group circle, .line-ranking-contents.invisible .active-group text {
+    filter: none;
+    opacity: 1;
+}
+
+.line-ranking-contents.invisible .active-dot {
+    filter: none;
+    opacity: 1;
+}

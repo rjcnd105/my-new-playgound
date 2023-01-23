@@ -4,18 +4,25 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   core: {
-    builder: 'webpack5',
+    builder: "webpack5",
   },
-  features: { storyStoreV7: true,  babelModeV7: true, },
-  stories: [
-    "../components/**/*.stories.@(js|jsx|ts|tsx|mdx)"
-  ],
+  features: { storyStoreV7: true },
+  stories: ["../components/**/*.stories.@(js|jsx|ts|tsx|mdx)"],
   addons: [
     "@storybook/addon-storysource",
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/addon-interactions"
+    "@storybook/addon-interactions",
+    {
+      name: "@storybook/addon-postcss",
+      options: {
+        postcssLoaderOptions: {
+          implementation: require("postcss"),
+        },
+      },
+    },
   ],
+  staticDirs: [{ from: "../storybookAssets/", to: "/" }],
   devtool: "eval-source-map",
   framework: "@storybook/react",
   webpackFinal: async (config) => {
@@ -36,9 +43,13 @@ module.exports = {
             url: false, // Required as image imports should be handled via JS/TS import statements
           },
         },
+        // {
+        //   test: /\.css$/i,
+        //   use: ["style-loader", "css-loader", "postcss-loader" /* 로더 설정 */],
+        // },
       ],
     });
 
     return config;
   },
-}
+};

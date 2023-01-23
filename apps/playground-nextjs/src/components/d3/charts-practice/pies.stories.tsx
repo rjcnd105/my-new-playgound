@@ -3,7 +3,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 import { DefaultArcObject } from "d3";
-import { flow } from "fp-ts/lib/function";
+import { flow } from "@fp-ts/data/Function";
 
 export default {
   /* 👇 The title prop is optional.

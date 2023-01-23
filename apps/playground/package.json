@@ -9,8 +9,8 @@
   "dependencies": {
     "@hj/common-lib": "workspace:*",
     "@hj/fp-ts-lib": "workspace:*",
-    "@sinclair/typebox": "^0.25.16",
-    "axios": "^1.2.1",
+    "@sinclair/typebox": "^0.25.20",
+    "axios": "^1.2.2",
     "fast-equals": "^4.0.3",
     "fp-ts": "^2.13.1",
     "fp-ts-std": "^0.15.1",
@@ -18,7 +18,7 @@
     "newtype-ts": "^0.3.5"
   },
   "devDependencies": {
-    "type-fest": "^3.5.0"
+    "type-fest": "^3.5.1"
   },
   "keywords": [],
   "author": "",

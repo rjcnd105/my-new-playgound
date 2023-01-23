@@ -28,8 +28,6 @@ module.exports = {
   webpackFinal: async (config) => {
     config.devtool = "eval-source-map";
 
-    console.log(config, "config");
-
     // vanilla extract webpack setup as seen here: https://vanilla-extract.style/documentation/integrations/webpack/
     config.plugins.push(new VanillaExtractPlugin());
     config.plugins.push(new MiniCssExtractPlugin());

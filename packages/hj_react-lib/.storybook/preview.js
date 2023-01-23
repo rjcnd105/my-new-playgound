@@ -1,3 +1,4 @@
+import "./globalStyle.css";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -7,4 +8,6 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+};
+
+// if (typeof globalThis !== "undefined") globalThis.d3 = d3;
