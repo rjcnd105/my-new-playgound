@@ -92,6 +92,7 @@
     "d3-array": "^3.2.1",
     "deepmerge-ts": "4.2.2",
     "date-fns": "^2.29.3",
+    "@fp-ts/core": "^0.1.1",
     "@fp-ts/data": "^0.0.40",
     "@fp-ts/optic": "^0.0.7",
     "framer-motion": "^8.4.0",
