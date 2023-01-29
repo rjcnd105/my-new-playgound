@@ -25,8 +25,8 @@ const itemByHeight = 50;
 
 const padding = {
   top: 60,
-  left: 30,
-  right: 120,
+  left: 40,
+  right: 100,
   bottom: 80,
 };
 
@@ -41,10 +41,14 @@ export const LineRanking = <RD extends RankData>({
   Tooltip,
 }: LineRankingProps<RD>) => {
   const itemCount = data.length;
-  const dateCount = data[0].rankings.length;
+
+  const dateTicks = data[0]?.rankings.map((d) => d.date);
+  const dateCount = dateTicks?.length;
+
+  if (dateCount === undefined) throw Error("dateCount is undefined");
 
   const chartWidth = calcChartWidth(dateCount);
-  const chartHeight = calcChartHeight(data[0].rankings.length);
+  const chartHeight = calcChartHeight(dateCount);
 
   const svgWidth = chartWidth + padding.left + padding.right;
   const svgHeight = chartHeight + padding.top + padding.bottom;
@@ -95,6 +99,9 @@ export const LineRanking = <RD extends RankData>({
     name,
     rankings: rankings.sort((a, b) => a.date.getTime() - b.date.getTime()),
   }));
+
+  if (dateSortedData[0] === undefined)
+    throw Error("dateSortedData[0] is undefined");
 
   const [minDate, maxDate] = extent(
     dateSortedData[0].rankings,
@@ -181,28 +188,26 @@ export const LineRanking = <RD extends RankData>({
           top={padding.top}
           left={padding.left}
         >
-          {dateSortedData.map((item, i) => {
-            return (
-              <RankingLine
-                color={colors[i]}
-                datum={item}
-                activeItem={activeItem}
-                dispatchActiveItem={dispatchActiveItem}
-                xScale={xScale}
-                yScale={yScale}
-                groupEvents={groupEventGenerator}
-                circleEvents={circleEventGenerator}
-                dateFormatter={dateFormatter}
-              />
-            );
-          })}
+          {dateSortedData.map((item, i) => (
+            <RankingLine
+              key={`${item.name}-${i}`}
+              color={colors[i % (colors.length + 1)]!}
+              datum={item}
+              activeItem={activeItem}
+              xScale={xScale}
+              yScale={yScale}
+              groupEvents={groupEventGenerator}
+              circleEvents={circleEventGenerator}
+              dateFormatter={dateFormatter}
+            />
+          ))}
         </Group>
         <Group id="line-ranking_x-axis">
           <AxisBottom
             scale={xScale}
             left={padding.left}
             top={chartHeight + padding.top + padding.bottom / 2}
-            numTicks={dateCount}
+            tickValues={dateTicks}
             stroke="#cfcfcf"
             hideTicks
             tickLabelProps={(params) => ({
@@ -211,7 +216,7 @@ export const LineRanking = <RD extends RankData>({
               dominantBaseline: "middle",
               fill: dateColor,
             })}
-            tickFormat={(d) => {
+            tickFormat={(d, i) => {
               if (d instanceof Date) {
                 return dateFormatter(new Date(d));
               }
@@ -226,8 +231,8 @@ export const LineRanking = <RD extends RankData>({
         tooltipTop !== undefined && (
           <TooltipInPortal
             key={Math.random()}
-            top={tooltipTop - 50}
-            left={tooltipLeft - 20}
+            top={tooltipTop}
+            left={tooltipLeft}
           >
             <Tooltip {...tooltipData} />
           </TooltipInPortal>

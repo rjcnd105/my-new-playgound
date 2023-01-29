@@ -8,7 +8,6 @@ import React from "react";
 import AreaCircle from "../SvgParts/AreaCircle";
 import AreaLine from "../SvgParts/AreaLine";
 import type {
-  Actions,
   DateByRankingData,
   GroupHandleEvents,
   LineRankingProps,
@@ -21,7 +20,6 @@ type Props<D extends RankData> = {
   color: string;
   datum: DateByRankingData<D>;
   activeItem: State;
-  dispatchActiveItem: React.Dispatch<Actions>;
   xScale: ScaleTypeToD3Scale<number, number>["time"];
   yScale: ScaleTypeToD3Scale<number, number>["linear"];
   groupEvents: GroupHandleEvents<D>;
@@ -36,7 +34,6 @@ export default function RankingLine<D extends RankData>({
   color,
   datum,
   activeItem,
-  dispatchActiveItem,
   xScale,
   yScale,
   dateFormatter,
@@ -47,7 +44,9 @@ export default function RankingLine<D extends RankData>({
   const isGroupActive = activeItem.activeId === groupClassName;
   const datumGroupEvents = groupEvents(groupClassName);
 
-  const lastRank = datum.rankings[datum.rankings.length - 1].rank;
+  const lastRank = datum.rankings[datum.rankings.length - 1]?.rank;
+
+  if (!lastRank) return null;
   return (
     <Group
       className={clsx(groupClassName, isGroupActive && "active-group")}
@@ -109,7 +108,7 @@ export default function RankingLine<D extends RankData>({
         );
       })}
       <Text
-        x={xScale.range()[1] + 16}
+        x={(xScale.range()?.[1] ?? 0) + 16}
         y={yScale(lastRank)}
         fill={color}
         {...datumGroupEvents}

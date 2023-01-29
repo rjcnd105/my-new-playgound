@@ -1,5 +1,5 @@
 import type { ComponentMeta } from "@storybook/react";
-import dayjs from "dayjs";
+import format from "date-fns/esm/format";
 
 import { LineRanking } from "./index";
 
@@ -8,19 +8,16 @@ type Ranking = {
   rank: number;
 };
 
-type Data = Array<{
-  name: string;
-  rankings: Ranking[];
-}>;
-
 type ParsedRanking = {
   date: Date;
   rank: number;
 };
-const dateConverter = (ranking: Ranking): ParsedRanking => ({
-  date: new Date(ranking.date),
-  rank: ranking.rank,
-});
+const dateConverter = (ranking: Ranking): ParsedRanking => {
+  return {
+    date: new Date(ranking.date),
+    rank: ranking.rank,
+  };
+};
 
 export default {
   /* 👇 The title prop is optional.
@@ -109,14 +106,14 @@ export const Sample = () => {
     name: d.name,
     rankings: d.rankings.map(dateConverter),
   }));
-  const myDateFormatter = (d: Date) => dayjs(d).format("YYYY-MM-DD");
+  const myDateFormatter = (d: Date) => format(d, "yyyy-MM-dd");
 
   return (
     <div style={{ width: "100%", maxWidth: 600, margin: "0 auto" }}>
       <div>랭킹 그래프</div>
       <LineRanking
         data={parsedData}
-        dateFormatter={(d) => dayjs(d).format("YYYY-MM-DD")}
+        dateFormatter={(d) => format(d, "yyyy-MM-dd")}
         Tooltip={({ name, data }) => (
           <div>
             <p>{myDateFormatter(data.date)}</p>

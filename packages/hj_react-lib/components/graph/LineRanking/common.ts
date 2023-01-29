@@ -1,5 +1,5 @@
-import { shuffle } from "d3-array";
-import type { MouseEventHandler, ReactNode } from "react";
+import { shuffle } from 'd3-array';
+import type { MouseEventHandler } from 'react';
 
 export type RankData = {
   date: Date;
@@ -7,7 +7,7 @@ export type RankData = {
 };
 
 export type TooltipData<D extends RankData> = {
-  name: DateByRankingData<D>["name"];
+  name: DateByRankingData<D>['name'];
   data: D;
 };
 
@@ -39,16 +39,16 @@ export type RankCircleHandleEvents<D extends RankData> = (
 ) => Events;
 
 export const colors = shuffle([
-  "#FF0000",
-  "#FF8700",
-  "#ffbe0b",
-  "#335c67",
-  "#8ac926",
-  "#ff006e",
-  "#78290f",
-  "#147DF5",
-  "#580AFF",
-  "#BE0AFF",
+  '#FF0000',
+  '#FF8700',
+  '#ffbe0b',
+  '#335c67',
+  '#8ac926',
+  '#ff006e',
+  '#78290f',
+  '#147DF5',
+  '#580AFF',
+  '#BE0AFF',
 ]);
 
 export type State = {
@@ -59,15 +59,15 @@ export type State = {
 export const initialState: State = { isClicked: false, activeId: null };
 
 export const ActionKind = {
-  HOVER: "hover",
-  CLICK: "click",
-  CLEAR: "clear",
+  HOVER: 'hover',
+  CLICK: 'click',
+  CLEAR: 'clear',
 } as const;
 
 export type Actions =
   | {
       type: typeof ActionKind.HOVER | typeof ActionKind.CLICK;
-      payload: State["activeId"];
+      payload: State['activeId'];
     }
   | {
       type: typeof ActionKind.CLEAR;
