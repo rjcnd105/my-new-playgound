@@ -22,7 +22,7 @@ module.exports = {
       },
     },
   ],
-  staticDirs: [{ from: "../storybookAssets/", to: "/" }],
+  // staticDirs: [{ from: "../storybookAssets/", to: "/" }],
   devtool: "eval-source-map",
   framework: "@storybook/react",
   webpackFinal: async (config) => {
