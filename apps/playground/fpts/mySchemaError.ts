@@ -100,9 +100,9 @@ export const resultWithDefaultError = flow(
 // 2. ParseResult로 에러 여부 판별. none인 경우 에러가 없음을 의미한다.
 export const result2ErrorWithDefault = flow(
   getFirstErrorWithDefault,
-  (f) =>
+  (errorFn) =>
     <A>(r: PR.ParseResult<A>) =>
-      pipe(E.getLeft(r), O.map(f)),
+      pipe(E.getLeft(r), O.map(errorFn)),
 );
 
 export const nameSchema = pipe(
