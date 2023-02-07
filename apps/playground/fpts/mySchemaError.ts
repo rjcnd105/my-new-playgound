@@ -105,24 +105,6 @@ export const result2ErrorWithDefault = flow(
       pipe(E.getLeft(r), O.map(f)),
 );
 
-// 첫번째 Annotation의 메세지를 가져옴
-export const getFirstMessage = getFirstAnnotationX(getMessage);
-
-export const getPE2Message = (defaultMessage: LazyArg<string>) =>
-  flow(
-    getFirstMessage,
-    E.fromOption(() => defaultMessage),
-  );
-
-export const getPE2MessageOrElse = flow(getPE2Message, (f) => flow(f, E.merge));
-
-export const getPRFirstErrorMessageOrElse = flow(
-  getPE2MessageOrElse,
-  (f) =>
-    <A>(r: PR.ParseResult<A>) =>
-      pipe(E.getLeft(r), O.map(f)),
-);
-
 export const nameSchema = pipe(
   S.string,
   S.minLength(1),
