@@ -1,4 +1,4 @@
-import type { ComponentMeta } from "@storybook/react";
+import type { Meta } from "@storybook/react";
 import { useRef, useState } from "react";
 
 import type { TachometerProps } from "./index";
@@ -12,7 +12,7 @@ export default {
    */
   title: "visx/TachometerGraph",
   component: TachometerGraph,
-} as ComponentMeta<typeof TachometerGraph>;
+} as Meta<typeof TachometerGraph>;
 
 const data: TachometerProps["data"] = [
   { color: "#2cba00", label: "매우 낮음" },

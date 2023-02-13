@@ -1,4 +1,4 @@
-import type { ComponentMeta } from "@storybook/react";
+import type { Meta } from "@storybook/react";
 import format from "date-fns/esm/format";
 
 import { LineRanking } from "./index";
@@ -26,7 +26,7 @@ export default {
    */
   title: "visx/LineRanking",
   component: LineRanking,
-} as ComponentMeta<typeof LineRanking>;
+} as Meta<typeof LineRanking>;
 
 const data = [
   {

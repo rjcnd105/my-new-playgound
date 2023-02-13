@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 import AnimatedNumber from "./index";
 import { useState } from "react";
 
@@ -9,7 +9,7 @@ export default {
    */
   title: "ui/AnimatedNumber",
   component: AnimatedNumber,
-} as ComponentMeta<typeof AnimatedNumber>;
+} as Meta<typeof AnimatedNumber>;
 
 export const Basic = () => {
   const [v, setV] = useState(100);

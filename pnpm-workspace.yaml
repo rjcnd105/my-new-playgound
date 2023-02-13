@@ -1,3 +1,7 @@
 packages:
-  - "apps/*"
-  - "packages/*"
+  - "apps/playground"
+  - "apps/playground-next"
+  - "packages/hj_common-lib"
+  - "packages/hj_fp-ts-lib"
+  - "packages/hj_react-lib"
+  - "packages/hj_wasm-lib"

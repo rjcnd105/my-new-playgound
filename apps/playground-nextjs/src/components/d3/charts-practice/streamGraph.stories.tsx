@@ -91,7 +91,7 @@ export const Basic = () => {
 
       const colorScale = d3.scaleOrdinal(dataFormatKey, d3.schemeTableau10);
       const areaGenerator = d3
-        .area<typeof stackData[number][number]>()
+        .area<(typeof stackData)[number][number]>()
         .x((d) => xScale(d.data.year))
         .y0((d) => yScale(d[0]))
         .y1((d) => yScale(d[1]))
