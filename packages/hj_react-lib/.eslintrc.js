@@ -1,10 +1,16 @@
 module.exports = {
+  root: true,
   parser: "@typescript-eslint/parser",
-  extends: ["prettier", "plugin:import/warnings", "plugin:prettier/recommended", "plugin:storybook/recommended"],
+  extends: [
+    "prettier",
+    "plugin:import/warnings",
+    "plugin:prettier/recommended",
+    "plugin:storybook/recommended",
+  ],
   plugins: ["@typescript-eslint", "jsx-a11y", "prettier", "simple-import-sort"],
   env: {
     browser: true,
-    node: true
+    node: true,
   },
   ignorePatterns: ["node_modules/*", "*.config.ts", "*.config.js"],
   rules: {
@@ -38,8 +44,8 @@ module.exports = {
     "react/no-unknown-property": "off",
     "@typescript-eslint/comma-dangle": "off",
     // Avoid conflict rule between Eslint and Prettier
-    "@typescript-eslint/consistent-type-imports": "error" // Ensure `import type` is used when it's necessary
-  }
+    "@typescript-eslint/consistent-type-imports": "error", // Ensure `import type` is used when it's necessary
+  },
   // overrides: [
   //   // Configuration for testing
   //   {
