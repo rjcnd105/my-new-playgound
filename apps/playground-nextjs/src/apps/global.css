@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+    @apply text-black;
+    height: 100%;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    line-height: 100%;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}

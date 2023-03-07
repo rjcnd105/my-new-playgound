@@ -1,37 +1,32 @@
-import * as S from "@fp-ts/schema";
+import * as S from "@effect/schema";
 import * as E from "@fp-ts/core/Either";
-import * as AST from "@fp-ts/schema/AST";
-import * as PR from "@fp-ts/schema/ParseResult";
+import * as AST from "@effect/schema/AST";
+import * as PR from "@effect/schema/ParseResult";
 import * as O from "@fp-ts/core/Option";
-import * as ID from "@fp-ts/core/Identity";
 import { compose, flow, pipe } from "@fp-ts/core/Function";
-import {
-  CustomId,
-  DescriptionId,
-  DocumentationId,
-  ExamplesId,
-  IdentifierId,
-  JSONSchemaId,
-  MessageId,
-  TitleId,
-} from "@fp-ts/schema/annotation/AST";
+import { MessageId } from "@effect/schema/annotation/AST";
 import { LazyArg } from "@fp-ts/core/src/Function";
 import { NonEmptyReadonlyArray } from "@fp-ts/core/ReadonlyArray";
 
-interface ErrorData<T extends string> {
+interface ErrorData<T> {
   message: string;
-  code: T;
+  code: (d: T) => T;
 }
 
-export const SchemaErrorId = "@fp-ts/schema/annotation/SchemaError" as const;
+export const SchemaErrorId = "@effect/schema/annotation/SchemaError" as const;
 
 export const schemaError =
-  <T extends string>(errorData: ErrorData<T>) =>
+  <T>(errorData: ErrorData<T>) =>
   <A>(self: S.Schema<A>): S.Schema<A> =>
     S.make(AST.setAnnotation(self.ast, SchemaErrorId, errorData));
 
-const unknownError: ErrorData<"unknown"> = {
-  code: "unknown",
+const imap =
+  <A, B>(f: (a: A) => B) =>
+  (a: A) =>
+    f(a);
+
+const unknownError: ErrorData<unknown> = {
+  code: () => "unknown",
   message: "알 수 없는 에러가 발생했습니다.",
 };
 
@@ -80,8 +75,8 @@ export const getFirstAnnotationX = flow(
 );
 
 // Right인 경우는 Schema에설정해 놓은 에러, Left인 경우는 defaultError로 구분할 수 있다.
-export const firstErrorWithDefault = (defaultError: ErrorData<string>) =>
-  flow(getFirstAnnotationX(getError), ID.map(E.fromOption(() => defaultError)));
+export const firstErrorWithDefault = <T>(defaultError: ErrorData<T>) =>
+  flow(getFirstAnnotationX(getError), imap(E.fromOption(() => defaultError)));
 
 // 위의 Right, Left 케이스를 하나로 합친다.
 export const getFirstErrorWithDefault = flow(
@@ -127,17 +122,17 @@ export const nameSchema = pipe(
   S.string,
   S.minLength(1),
   schemaError({
-    code: "최소글자수미만",
+    code: () => "최소글자수미만",
     message: "한글자 이상 입력해줘",
   }),
   S.maxLength(8),
   schemaError({
-    code: "최대글자수초과",
+    code: () => "최대글자수초과",
     message: "8글자 이하로 입력해줘",
   }),
   S.filter((s) => !/[^\w\s]/.test(s)),
   schemaError({
-    code: "특수문자불가",
+    code: () => "특수문자불가",
     message: "특수문자는 사용할 수 없어",
   }),
 );
@@ -147,18 +142,18 @@ export const amountSchema = pipe(
   S.transform(S.number, Number.parseInt, String.toString),
   S.filter((n) => !Number.isNaN(n)),
   schemaError({
-    code: "올바른형태아님",
+    code: () => "올바른형태아님",
     message: "숫자만 입력해줘",
   }),
   S.greaterThan(0),
   schemaError({
     message: "0원 넘게 입력해줘",
-    code: "최소금액미만",
+    code: () => "최소금액미만",
   }),
   S.lessThan(100000000),
   schemaError({
     message: "1억원 미만으로 입력해줘",
-    code: "최대금액초과",
+    code: () => "최대금액초과",
   }),
 );
 
@@ -166,12 +161,12 @@ export const payerSchema = pipe(
   S.array(S.string),
   S.filter((v) => v.length <= 10),
   schemaError({
-    code: "최대인원초과",
+    code: () => "최대인원초과",
     message: "최대 10명까지만 있을 수 있어",
   }),
   S.filter((v) => v.length > 0),
   schemaError({
-    code: "최소인원미만",
+    code: () => "최소인원미만",
     message: "최소 1명은 있어야 해",
   }),
 );

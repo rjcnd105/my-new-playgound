@@ -27,5 +27,6 @@
     "storybook": {
       "cache": false
     }
-  }
+  },
+  "globalEnv": [".env"]
 }

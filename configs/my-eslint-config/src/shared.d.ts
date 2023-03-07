@@ -1,0 +1,22 @@
+export declare const GLOB_SRC = "**/*.?([mt])[jt]s?(x)";
+export declare const GLOB_JS = "**/*.?([mt])js";
+export declare const GLOB_JSX = "**/*.?([mt])jsx";
+export declare const GLOB_TS = "**/*.?([mt])ts";
+export declare const GLOB_TSX = "**/*.?([mt])tsx";
+export declare const GLOB_STYLE = "**/*.{c,le,sc}ss";
+export declare const GLOB_CSS = "**/*.css";
+export declare const GLOB_LESS = "**/*.less";
+export declare const GLOB_SCSS = "**/*.scss";
+export declare const GLOB_JSON = "**/*.json";
+export declare const GLOB_JSON5 = "**/*.json5";
+export declare const GLOB_JSONC = "**/*.jsonc";
+export declare const GLOB_MARKDOWN = "**/*.md";
+export declare const GLOB_VUE = "**/*.vue";
+export declare const GLOB_YAML = "**/*.y?(a)ml";
+export declare const GLOB_HTML = "**/*.htm?(l)";
+export declare const GLOB_ALL_SRC: string[];
+export declare const GLOB_NODE_MODULES = /** @type {const} */ "**/node_modules/**";
+export declare const GLOB_DIST = /** @type {const} */ "**/dist/**";
+export declare const GLOB_LOCKFILE: string[];
+export declare const GLOB_EXCLUDE: string[];
+//# sourceMappingURL=shared.d.ts.map

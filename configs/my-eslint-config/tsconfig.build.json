@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "declaration": true,
+    "declarationMap": true,
+    "target": "ESNext",
+    "allowJs": false,
+    "composite": true,
+    "module": "CommonJS",
+    "lib": ["ESNext"],
+    
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}

@@ -1,12 +1,11 @@
-import * as S from "@fp-ts/schema";
+import * as S from "@effect/schema";
 import * as E from "@fp-ts/core/Either";
-import * as AST from "@fp-ts/schema/AST";
-import * as PR from "@fp-ts/schema/ParseResult";
+import * as AST from "@effect/schema/AST";
+import * as PR from "@effect/schema/ParseResult";
 import * as O from "@fp-ts/core/Option";
 import * as ID from "@fp-ts/core/Identity";
 import { compose, flow, pipe } from "@fp-ts/core/Function";
 import {
-  CustomId,
   DescriptionId,
   DocumentationId,
   ExamplesId,
@@ -14,7 +13,7 @@ import {
   JSONSchemaId,
   MessageId,
   TitleId,
-} from "@fp-ts/schema/annotation/AST";
+} from "@effect/schema/annotation/AST";
 import { LazyArg } from "@fp-ts/core/src/Function";
 import { NonEmptyReadonlyArray } from "@fp-ts/core/ReadonlyArray";
 
@@ -47,6 +46,11 @@ const composeR =
   <A, B>(ab: (a: A) => B) =>
   <C>(bc: (b: B) => C) =>
     flow(ab, bc);
+
+const imap =
+  <A, B>(f: (a: A) => B) =>
+  (a: A) =>
+    f(a);
 
 const getAnnotationX =
   <A>(getter: AnnotationGetter<A>) =>
@@ -81,7 +85,7 @@ export const getFirstAnnotationX = flow(
 
 // Right인 경우는 Schema에설정해 놓은 에러, Left인 경우는 defaultError로 구분할 수 있다.
 export const firstErrorWithDefault = (defaultError: ErrorData<string>) =>
-  flow(getFirstAnnotationX(getError), ID.map(E.fromOption(() => defaultError)));
+  flow(getFirstAnnotationX(getError), imap(E.fromOption(() => defaultError)));
 
 // 위의 Right, Left 케이스를 하나로 합친다.
 export const getFirstErrorWithDefault = flow(

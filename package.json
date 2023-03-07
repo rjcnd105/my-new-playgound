@@ -2,33 +2,24 @@
   "name": "my-new-playground",
   "version": "0.0.0",
   "private": true,
-  "workspaces": [
-    "apps/playground",
-    "apps/playground-nextjs",
-    "packages/hj_common-lib",
-    "packages/hj_fp-ts-lib",
-    "packages/hj_react-lib",
-    "packages/hj_wasm-lib"
-  ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
+    "clean": "concurrently \"pnpm run clean:root\" \"pnpm run clean:workspaces\"", 
+    "clean:root": "rm -rf ./node_modules",
+    "clean:workspaces": "turbo run clean",
     "storybook:lib": "turbo run storybook --filter=@hj/react-lib",
     "storybook:playground": "turbo run storybook --filter=playground-nextjs",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@manypkg/cli": "^0.19.2",
-    "@typescript-eslint/eslint-plugin": "^5.49.0",
-    "@typescript-eslint/parser": "^5.49.0",
-    "eslint": "^8.33.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.3",
-    "prettier-plugin-tailwindcss": "^0.2.2",
-    "turbo": "^1.7.0",
-    "typescript": "^4.9.4"
+    "my-eslint-config": "workspace:*",
+    "@manypkg/cli": "^0.20.0",
+    "eslint": "^8.35.0", 
+    "concurrently": "^7.6.0",
+    "turbo": "^1.8.3",
+    "typescript": "^4.9.5"
   },
   "engines": {
     "node": ">=18.0.0"
