@@ -1,14 +1,12 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ts = void 0;
-const tsParser = require("@typescript-eslint/parser");
-const tsPlugin = require("@typescript-eslint/eslint-plugin");
-const shared_1 = require("./shared");
-/** @type {import('eslint-define-config').FlatESLintConfig[]} */
-exports.ts = [
+import { GLOB_TS } from "../shared.js";
+import tsParser from "@typescript-eslint/parser";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
+import { test } from "../parts/test.js";
+import { declare } from "../parts/declare.js";
+// https://stackoverflow.com/questions/65873101/node-requires-file-extension-for-import-statement/65874173#65874173
+export const ts = [
     {
-        files: [shared_1.GLOB_TS],
-        ignores: shared_1.GLOB_EXCLUDE,
+        files: [GLOB_TS],
         languageOptions: {
             parser: tsParser,
             parserOptions: {
@@ -35,17 +33,6 @@ exports.ts = [
             "@typescript-eslint/prefer-as-const": "warn",
         },
     },
-    {
-        files: ["**/*.d.ts"],
-        ignores: shared_1.GLOB_EXCLUDE,
-        rules: {
-            "import/no-duplicates": "off",
-        },
-    },
-    {
-        files: ["**/*.{test,spec}.ts?(x)"],
-        rules: {
-            "no-unused-expressions": "off",
-        },
-    },
+    declare,
+    test,
 ];

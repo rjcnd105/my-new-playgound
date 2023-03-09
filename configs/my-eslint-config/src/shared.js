@@ -1,44 +1,40 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.GLOB_EXCLUDE = exports.GLOB_LOCKFILE = exports.GLOB_DIST = exports.GLOB_NODE_MODULES = exports.GLOB_ALL_SRC = exports.GLOB_HTML = exports.GLOB_YAML = exports.GLOB_VUE = exports.GLOB_MARKDOWN = exports.GLOB_JSONC = exports.GLOB_JSON5 = exports.GLOB_JSON = exports.GLOB_SCSS = exports.GLOB_LESS = exports.GLOB_CSS = exports.GLOB_STYLE = exports.GLOB_TSX = exports.GLOB_TS = exports.GLOB_JSX = exports.GLOB_JS = exports.GLOB_SRC = void 0;
-// @ts-check
-exports.GLOB_SRC = "**/*.?([mt])[jt]s?(x)";
-exports.GLOB_JS = "**/*.?([mt])js";
-exports.GLOB_JSX = "**/*.?([mt])jsx";
-exports.GLOB_TS = "**/*.?([mt])ts";
-exports.GLOB_TSX = "**/*.?([mt])tsx";
-exports.GLOB_STYLE = "**/*.{c,le,sc}ss";
-exports.GLOB_CSS = "**/*.css";
-exports.GLOB_LESS = "**/*.less";
-exports.GLOB_SCSS = "**/*.scss";
-exports.GLOB_JSON = "**/*.json";
-exports.GLOB_JSON5 = "**/*.json5";
-exports.GLOB_JSONC = "**/*.jsonc";
-exports.GLOB_MARKDOWN = "**/*.md";
-exports.GLOB_VUE = "**/*.vue";
-exports.GLOB_YAML = "**/*.y?(a)ml";
-exports.GLOB_HTML = "**/*.htm?(l)";
-exports.GLOB_ALL_SRC = ([
-    exports.GLOB_SRC,
-    exports.GLOB_STYLE,
-    exports.GLOB_JSON,
-    exports.GLOB_JSON5,
-    exports.GLOB_MARKDOWN,
-    exports.GLOB_VUE,
-    exports.GLOB_YAML,
-    exports.GLOB_HTML,
-]);
-exports.GLOB_NODE_MODULES = ("**/node_modules/**");
-exports.GLOB_DIST = ("**/dist/**");
-exports.GLOB_LOCKFILE = ([
+export const GLOB_SRC = "**/*.?([mt])[jt]s?(x)";
+export const GLOB_JS = "**/*.?([mt])js";
+export const GLOB_JSX = "**/*.?([mt])jsx";
+export const GLOB_TS = "**/*.?([mt])ts";
+export const GLOB_TSX = "**/*.?([mt])tsx";
+export const GLOB_STYLE = "**/*.{c,le,sc}ss";
+export const GLOB_CSS = "**/*.css";
+export const GLOB_LESS = "**/*.less";
+export const GLOB_SCSS = "**/*.scss";
+export const GLOB_JSON = "**/*.json";
+export const GLOB_JSON5 = "**/*.json5";
+export const GLOB_JSONC = "**/*.jsonc";
+export const GLOB_MARKDOWN = "**/*.md";
+export const GLOB_VUE = "**/*.vue";
+export const GLOB_YAML = "**/*.y?(a)ml";
+export const GLOB_HTML = "**/*.htm?(l)";
+export const GLOB_ALL_SRC = [
+    GLOB_SRC,
+    GLOB_STYLE,
+    GLOB_JSON,
+    GLOB_JSON5,
+    GLOB_MARKDOWN,
+    GLOB_VUE,
+    GLOB_YAML,
+    GLOB_HTML,
+];
+export const GLOB_NODE_MODULES = "**/node_modules/**";
+export const GLOB_DIST = "**/dist/**";
+export const GLOB_LOCKFILE = [
     "**/package-lock.json",
     "**/yarn.lock",
     "**/pnpm-lock.yaml",
-]);
-exports.GLOB_EXCLUDE = ([
-    exports.GLOB_NODE_MODULES,
-    exports.GLOB_DIST,
-    ...exports.GLOB_LOCKFILE,
+];
+export const GLOB_EXCLUDE = [
+    GLOB_NODE_MODULES,
+    GLOB_DIST,
+    ...GLOB_LOCKFILE,
     "**/CHANGELOG*.md",
     "**/*.min.*",
     "**/LICENSE*",
@@ -49,4 +45,4 @@ exports.GLOB_EXCLUDE = ([
     "**/__snapshots__",
     "**/auto-import.d.ts",
     "**/components.d.ts",
-]);
+];

@@ -1,22 +1,31 @@
 {
   "name": "my-eslint-config",
   "version": "0.0.1",
-  "main": "./index.js",
-  "module": "./index.js",
-  "type": "commonjs",
+  "type": "module",
+  "exports": {
+    "./*": "./src/configs/*"
+  },
   "license": "MIT",
   "scripts": {
-    "build": "tsc -p tsconfig.build.json"
+    "build": "tsc --build --force tsconfig.build.json"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^5.54.0",
-    "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "@typescript-eslint/parser": "^5.54.1",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
     "eslint-config-next": "^13.2.3",
-    "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-storybook": "^0.6.11",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-config-prettier": "^8.7.0",
+    "prettier": "^2.8.4",
+    "globals": "^13.20.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-unicorn": "^46.0.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-config-turbo": "^0.0.9",
     "eslint-define-config": "^1.15.0",
+    "eslint-plugin-mdx": "^2.0.5",
+    "eslint-plugin-file-extension-in-import-ts": "^1.0.1",
     "typescript": "^4.9.5",
     "eslint": "^8.35.0"
   },
@@ -25,5 +34,8 @@
   },
   "peerDependencies": {
     "eslint": "^8.35.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

@@ -15,8 +15,7 @@ export declare const GLOB_VUE = "**/*.vue";
 export declare const GLOB_YAML = "**/*.y?(a)ml";
 export declare const GLOB_HTML = "**/*.htm?(l)";
 export declare const GLOB_ALL_SRC: string[];
-export declare const GLOB_NODE_MODULES = /** @type {const} */ "**/node_modules/**";
-export declare const GLOB_DIST = /** @type {const} */ "**/dist/**";
+export declare const GLOB_NODE_MODULES = "**/node_modules/**";
+export declare const GLOB_DIST = "**/dist/**";
 export declare const GLOB_LOCKFILE: string[];
 export declare const GLOB_EXCLUDE: string[];
-//# sourceMappingURL=shared.d.ts.map
