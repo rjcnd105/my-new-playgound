@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "type": "module",
   "exports": {
-    "./*": "./src/configs/*"
+    "./config/*": "./src/configs/*",
+    "./parts/*": "./src/partss/*"
   },
   "license": "MIT",
   "scripts": {
