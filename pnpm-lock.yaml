@@ -190,6 +190,7 @@ importers:
 
   configs/my-eslint-config:
     specifiers:
+      '@next/eslint-plugin-next': ^13.2.3
       '@typescript-eslint/eslint-plugin': ^5.54.1
       '@typescript-eslint/parser': ^5.54.1
       eslint: ^8.35.0
@@ -199,9 +200,11 @@ importers:
       eslint-define-config: ^1.15.0
       eslint-plugin-file-extension-in-import-ts: ^1.0.1
       eslint-plugin-import: ^2.27.5
+      eslint-plugin-markdown: ^3.0.0
       eslint-plugin-mdx: ^2.0.5
       eslint-plugin-prettier: ^4.2.1
       eslint-plugin-react: 7.32.2
+      eslint-plugin-react-hooks: ^4.6.0
       eslint-plugin-simple-import-sort: ^10.0.0
       eslint-plugin-storybook: ^0.6.11
       eslint-plugin-unicorn: ^46.0.0
@@ -209,6 +212,7 @@ importers:
       prettier: ^2.8.4
       typescript: ^4.9.5
     devDependencies:
+      '@next/eslint-plugin-next': 13.2.3
       '@typescript-eslint/eslint-plugin': 5.54.1_mlk7dnz565t663n4razh6a6v6i
       '@typescript-eslint/parser': 5.54.1_ycpbpc6yetojsgtrx3mwntkhsu
       eslint: 8.35.0
@@ -218,9 +222,11 @@ importers:
       eslint-define-config: 1.15.0
       eslint-plugin-file-extension-in-import-ts: 1.0.1
       eslint-plugin-import: 2.27.5_uyiasnnzcqrxqkfvjklwnmwcha
+      eslint-plugin-markdown: 3.0.0_eslint@8.35.0
       eslint-plugin-mdx: 2.0.5_eslint@8.35.0
       eslint-plugin-prettier: 4.2.1_xprnzp4ul2bcpmfe73av4voica
       eslint-plugin-react: 7.32.2_eslint@8.35.0
+      eslint-plugin-react-hooks: 4.6.0_eslint@8.35.0
       eslint-plugin-simple-import-sort: 10.0.0_eslint@8.35.0
       eslint-plugin-storybook: 0.6.11_ycpbpc6yetojsgtrx3mwntkhsu
       eslint-plugin-unicorn: 46.0.0_eslint@8.35.0

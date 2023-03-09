@@ -1,9 +1,10 @@
-import { GLOB_TS } from "../shared.js";
-import { type FlatESLintConfig } from "eslint-define-config";
-import tsParser from "@typescript-eslint/parser";
 import tsPlugin from "@typescript-eslint/eslint-plugin";
-import { test } from "../parts/test.js";
+import tsParser from "@typescript-eslint/parser";
+import { type FlatESLintConfig } from "eslint-define-config";
+
 import { declare } from "../parts/declare.js";
+import { test } from "../parts/test.js";
+import { GLOB_TS } from "../shared.js";
 
 // https://stackoverflow.com/questions/65873101/node-requires-file-extension-for-import-statement/65874173#65874173
 export const ts = [
