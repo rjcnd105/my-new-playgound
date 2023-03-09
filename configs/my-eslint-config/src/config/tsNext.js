@@ -1,9 +1,11 @@
-import { ts } from "./ts.js";
-export const next = [
-    ts,
+import { GLOB_TSX } from "../shared";
+import { base } from "./base.js";
+import { ts } from "./ts";
+export const tsNext = [
+    ...base,
+    ...ts,
     {
-        rules: {
-            "@next/next/no-html-link-for-pages": "off",
-        },
+        files: [GLOB_TSX],
+        extends: ["plugin:@next/next/recommended"],
     },
 ];

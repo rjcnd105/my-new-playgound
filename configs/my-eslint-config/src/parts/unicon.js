@@ -1,4 +1,4 @@
-// @ts-ignore 
+// @ts-ignore
 import unicornPlugin from "eslint-plugin-unicorn";
 export const unicorn = {
     plugins: {
