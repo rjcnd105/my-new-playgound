@@ -16,7 +16,6 @@
     "types": ["node"],
     "declaration": true,
     "declarationMap": true,
-    "emitDeclarationOnly": true,
     "outDir": "dist"
   },
   "filesGlob": [

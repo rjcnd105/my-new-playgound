@@ -2,14 +2,11 @@ import globals from "globals";
 
 // import { GLOB_EXCLUDE } from "../shared.js";
 // @ts-ignore
-import { imports } from "../parts";
+import { imports } from "../parts/imports.js";
 
 export const base = [
   "eslint:recommended",
   {
-    parserOptions: {
-      parser: "@babel/eslint-parser"
-    },
     languageOptions: {
       globals: {
         ...globals.browser,

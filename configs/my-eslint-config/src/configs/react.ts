@@ -1,6 +1,6 @@
 import { type FlatESLintConfig } from "eslint-define-config";
 
-import { GLOB_EXCLUDE, GLOB_JSX } from "../shared";
+import { GLOB_EXCLUDE, GLOB_JSX } from "../shared.js";
 
 export const react = [
   "plugin:react/recommended",

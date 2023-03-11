@@ -1,7 +1,7 @@
 // @ts-ignore
 import markdownPlugin from "eslint-plugin-markdown";
 
-import { GLOB_MARKDOWN } from "../shared";
+import { GLOB_MARKDOWN } from "../shared.js";
 
 export const md = [
   {
