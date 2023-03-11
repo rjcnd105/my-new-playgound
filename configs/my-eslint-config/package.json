@@ -1,14 +1,15 @@
 {
   "name": "my-eslint-config",
   "version": "0.0.1",
-  "type": "module",
   "exports": {
-    "./config/*": "./src/configs/*",
-    "./parts/*": "./src/partss/*"
+    "./config/*": "./build/configs/*",
+    "./parts/*": "./build/partss/*"
   },
+  "type": "module",
   "license": "MIT",
   "scripts": {
-    "build": "tsc --build --force tsconfig.build.json"
+    "build": "tsc --build --force tsconfig.build.json",
+    "build-bundle": "tsup"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^5.54.1",
@@ -21,6 +22,8 @@
     "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-markdown": "^3.0.0",
     "@next/eslint-plugin-next": "^13.2.3",
+    "@babel/core": "^7.21.0",
+    "@babel/eslint-parser": "^7.19.1",
     "prettier": "^2.8.4",
     "globals": "^13.20.0",
     
@@ -32,6 +35,8 @@
     "eslint-plugin-mdx": "^2.0.5",
     "eslint-plugin-file-extension-in-import-ts": "^1.0.1",
     "typescript": "^4.9.5",
+    "tsup": "^6.6.3",
+    "@types/node": "^18.15.0",
     "eslint": "^8.35.0"
   },
   "publishConfig": {

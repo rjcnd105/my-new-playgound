@@ -1,10 +1,10 @@
 import { type FlatESLintConfig } from "eslint-define-config";
 
 import { GLOB_TSX } from "../shared";
-import { base } from "./base.js";
+import { base } from "./base";
 import { ts } from "./ts";
-
-export const tsNext = [
+ 
+export const tsNext = [ 
   ...base,
   ...ts,
   {
