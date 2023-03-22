@@ -1,5 +1,4 @@
-/** @type {import("eslint").Linter.Config} */
-module.exports = {
-  sourceType: "module",
-  ignores: ["**/eslint.config.js"],
-};
+import * as configs from "my-eslint-config/configs/index.js";
+// import * as parts from "my-eslint-config/parts/index.js";
+
+export default [...configs.tsNextjs];

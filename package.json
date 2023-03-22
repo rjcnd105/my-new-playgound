@@ -6,7 +6,7 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "clean": "concurrently \"pnpm run clean:root\" \"pnpm run clean:workspaces\"", 
+    "clean": "concurrently \"pnpm run clean:root\" \"pnpm run clean:workspaces\"",
     "clean:root": "rm -rf ./node_modules",
     "clean:workspaces": "turbo run clean",
     "storybook:lib": "turbo run storybook --filter=@hj/react-lib",
@@ -14,13 +14,13 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "my-eslint-config": "workspace:*",
     "@manypkg/cli": "^0.20.0",
-    "eslint": "^8.35.0", 
     "concurrently": "^7.6.0",
+    "eslint": "^8.36.0",
+    "my-eslint-config": "workspace:*",
+    "tsup": "^6.6.3",
     "turbo": "^1.8.3",
-    "typescript": "^4.9.5",
-    "tsup": "^6.6.3"
+    "typescript": "^5.0.2"
   },
   "engines": {
     "node": ">=18.0.0"

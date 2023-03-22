@@ -1,14 +1,14 @@
 // import "./style.css";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import * as d3 from "d3";
+import { useLayoutEffect, useRef } from "react";
 
 export default {
   /* 👇 The title prop is optional.
    * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
    * to learn how to generate automatic titles
    */
-  title: "d3-charts-practice/bar",
+  title: "d3-charts-practice/bar"
 };
 type Data = {
   technology: string;
@@ -23,11 +23,11 @@ type Props = {
 };
 export const Basic = {
   render: ({
-    barHeight = 40,
-    barSpacing = 8,
-    barX = 100,
-    barY = 24,
-  }: Props) => {
+             barHeight = 40,
+             barSpacing = 8,
+             barX = 100,
+             barY = 24
+           }: Props) => {
     const wrapRef = useRef(null);
 
     useLayoutEffect(() => {
@@ -39,7 +39,7 @@ export const Basic = {
 
       d3.csv<Data, keyof Data>("d3-data/chapter3/data.csv", (d) => ({
         technology: d.technology ?? "",
-        count: +(d.count ?? 0),
+        count: +(d.count ?? 0)
       })).then((data) => {
         const lensCount = (data: Data) => data.count;
         const maxCount = d3.max(data, lensCount); // => 1078
@@ -81,7 +81,7 @@ export const Basic = {
           .attr("height", barWidth)
           .attr("x", barX)
           .attr("fill", (d) =>
-            d.technology === "D3.js" ? "yellowgreen" : "skyblue",
+            d.technology === "D3.js" ? "yellowgreen" : "skyblue"
           );
         barGroups
           .append("text")
@@ -116,5 +116,5 @@ export const Basic = {
         className="w-full max-w-[600px] bg-yellow-50 mx-auto"
       ></div>
     );
-  },
+  }
 };

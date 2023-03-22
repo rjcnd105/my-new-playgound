@@ -1,8 +1,8 @@
 import globals from "globals";
 
-// import { GLOB_EXCLUDE } from "../shared.js";
+// import { GLOB_EXCLUDE } from "../shared";
 // @ts-ignore
-import { imports } from "../parts/imports.js";
+import { imports } from "../parts/index.js";
 
 export const base = [
   "eslint:recommended",

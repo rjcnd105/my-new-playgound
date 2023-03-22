@@ -4,7 +4,7 @@ import markdownPlugin from "eslint-plugin-markdown";
 import { GLOB_MARKDOWN } from "../shared.js";
 
 export const md = [
-  {
+  { 
     files: [GLOB_MARKDOWN],
     plugins: {
       markdown: markdownPlugin,

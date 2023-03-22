@@ -5,5 +5,6 @@ export default function RootHeader() {
       <meta name="description" content="서치" />
       <link rel="icon" href="/favicon.ico" />
     </>
-  );
-}
+  ); 
+}  
+ 

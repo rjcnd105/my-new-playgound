@@ -1,16 +1,15 @@
 // import "./style.css";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { flow } from "@effect/data/Function";
 import * as d3 from "d3";
-import { DefaultArcObject } from "d3";
-import { flow } from "@fp-ts/data/Function";
+import { useLayoutEffect, useRef } from "react";
 
 export default {
   /* 👇 The title prop is optional.
    * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
    * to learn how to generate automatic titles
    */
-  title: "d3-charts-practice/pies",
+  title: "d3-charts-practice/pies"
 };
 
 type Format =
@@ -46,12 +45,12 @@ const perOuterRadius = 1;
 const getIndexX = (i: number) => (i % rowPieMaxCount) + 1;
 const getX = flow(
   getIndexX,
-  (xIndex) => xIndex * divisionSpace - divisionSpace / 2 + margin,
+  (xIndex) => xIndex * divisionSpace - divisionSpace / 2 + margin
 );
 const getIndexY = (i: number) => Math.floor(i / rowPieMaxCount) + 1;
 const getY = flow(
   getIndexY,
-  (yIndex) => yIndex * divisionSpace - divisionSpace / 2 + margin,
+  (yIndex) => yIndex * divisionSpace - divisionSpace / 2 + margin
 );
 
 export const Basic = () => {
@@ -63,7 +62,7 @@ export const Basic = () => {
     d3.csv<Data, keyof Data>("d3-data/chapter5/data1.csv", d3.autoType).then(
       (data) => {
         const formats = data.columns.filter(
-          (d) => d !== "year",
+          (d) => d !== "year"
         ) as DataFormat[];
         const yearSet = new Set(filterYears);
 
@@ -79,7 +78,7 @@ export const Basic = () => {
             "viewBox",
             `0 0 ${svgWidth} ${
               getIndexY(filterYears.length) * divisionSpace + margin
-            }`,
+            }`
           );
 
         // 파이를 그릴 데이터를 만듦
@@ -110,7 +109,7 @@ export const Basic = () => {
           const arcOptions = {
             innerRadius: (perInnerRadius * pieChartSize) / 2,
             padAngle: 0.02,
-            outerRadius: (perOuterRadius * pieChartSize) / 2,
+            outerRadius: (perOuterRadius * pieChartSize) / 2
           };
 
           const colorScale = d3.scaleOrdinal(formats, [
@@ -120,7 +119,7 @@ export const Basic = () => {
             "#fdb462",
             "#b3de69",
             "#bc80bd",
-            "#ffed6f",
+            "#ffed6f"
           ]);
           const arcX = getX(index);
           const arcY = getY(index);
@@ -142,8 +141,8 @@ export const Basic = () => {
               arcGenerator({
                 startAngle: d.startAngle,
                 endAngle: d.endAngle,
-                ...arcOptions,
-              }),
+                ...arcOptions
+              })
             )
             .attr("fill", (d) => colorScale(d.data.format));
 
@@ -161,7 +160,7 @@ export const Basic = () => {
               const [x, y] = arcGenerator.centroid({
                 startAngle: d.startAngle,
                 endAngle: d.endAngle,
-                ...arcOptions,
+                ...arcOptions
               });
               // 2PI 라디안은 360deg dl므로
               // startAngle, endAngle은 라디안 단위이므로
@@ -176,7 +175,7 @@ export const Basic = () => {
                 ...d,
                 percentage,
                 x,
-                y,
+                y
               };
             })
             .text((d) => {
@@ -190,7 +189,7 @@ export const Basic = () => {
             .style("opacity", (d) => (d.percentage > 0.05 ? 1 : 0))
             .attr("fill", "white");
         }
-      },
+      }
     );
   }, [wrapRef.current]);
 

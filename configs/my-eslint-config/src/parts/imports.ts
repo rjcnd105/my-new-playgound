@@ -1,8 +1,9 @@
 // @ts-ignore
-import simpleImportSort from "eslint-plugin-simple-import-sort";
+import { type FlatESLintConfig } from "eslint-define-config";
 // @ts-ignore
 import * as importPlugin from "eslint-plugin-import";
-import { type FlatESLintConfig } from "eslint-define-config";
+// @ts-ignore
+import simpleImportSort from "eslint-plugin-simple-import-sort";
 
 export const imports = {
   plugins: {

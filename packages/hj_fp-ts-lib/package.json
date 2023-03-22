@@ -11,20 +11,20 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.54.0",
-    "@typescript-eslint/parser": "^5.54.0",
-    "@typescript-eslint/type-utils": "^5.54.0",
-    "eslint": "^8.35.0",
-    "fast-check": "^3.7.0",
+    "@typescript-eslint/eslint-plugin": "^5.55.0",
+    "@typescript-eslint/parser": "^5.55.0",
+    "@typescript-eslint/type-utils": "^5.55.0",
+    "eslint": "^8.36.0",
+    "fast-check": "^3.7.1",
     "type-fest": "^3.6.1",
-    "typescript": "^4.9.5"
+    "typescript": "^5.0.2"
   },
   "dependencies": {
-    "@effect/data": "^0.3.2",
-    "@effect/io": "^0.6.0",
-    "@effect/match": "^0.3.0",
-    "@effect/schema": "^0.0.4",
+    "@effect/data": "^0.5.0",
+    "@effect/io": "^0.10.0",
+    "@effect/match": "^0.4.0",
+    "@effect/schema": "^0.2.0",
     "@fp-ts/core": "^0.2.1",
-    "@fp-ts/optic": "^0.4.0"
+    "@fp-ts/optic": "^0.5.0"
   }
 }
