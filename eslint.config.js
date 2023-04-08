@@ -1,3 +1,4 @@
-const { ts } = require("./configs/my-eslint-config/src/ts");
+import * as config from "@hj/eslint-config/configs/index.js";
+import * as parts from "@hj/eslint-config/parts/index.js";
 
-module.exports = ts;
+export default [...config.base, ...config.ts, parts.prettier];

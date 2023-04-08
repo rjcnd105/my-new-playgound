@@ -1,21 +1,5 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Default",
-  "compilerOptions": {
-    "target": "es2021",
-    "module": "esnext",
-    "lib": ["ES2021"],
-    "strict": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "skipLibCheck": true,
-    "noUnusedLocals": true,
-    "resolveJsonModule": true,
-    "types": ["node"],
-    "allowJs": true,
-    "declaration": true,
-    "emitDeclarationOnly": true
-  },
+  "extends": "@hj/tsconfig/base.json",
   "include": ["**/*.d.ts", "**/*.ts"],
   "exclude": ["node_modules"]
 }

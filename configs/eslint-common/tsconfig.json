@@ -1,0 +1,6 @@
+{
+  "extends": "@hj/tsconfig/base.json",
+  "compilerOptions": {
+    "baseUrl": "."
+  }
+}  

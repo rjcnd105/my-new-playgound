@@ -1,5 +1,5 @@
 {
-  "name": "my-eslint-config",
+  "name": "@hj/eslint-config",
   "version": "0.0.1",
   "type": "module",
   "exports": {
@@ -14,39 +14,38 @@
     "build-bundle": "tsup"
   },
   "devDependencies": {
-    "concurrently": "^7.6.0",
-    "@typescript-eslint/parser": "^5.55.0",
-    "@typescript-eslint/eslint-plugin": "^5.55.0",
-    "eslint-config-next": "^13.2.4",
+    "@babel/core": "^7.21.4",
+    "@babel/eslint-parser": "^7.21.3",
+    "@next/eslint-plugin-next": "^13.3.0",
+    "@types/node": "^18.15.11",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "concurrently": "^8.0.1",
+    "eslint": "^8.38.0",
+    "eslint-config-next": "^13.3.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-turbo": "^1.8.8",
+    "eslint-define-config": "^1.17.0",
+    "eslint-plugin-file-extension-in-import-ts": "^1.0.2",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-markdown": "^3.0.0",
+    "eslint-plugin-mdx": "^2.0.5",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-storybook": "^0.6.11",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-config-prettier": "^8.7.0",
-    "eslint-plugin-markdown": "^3.0.0",
-    "@next/eslint-plugin-next": "^13.2.4",
-    "@babel/core": "^7.21.3",
-    "@babel/eslint-parser": "^7.21.3",
-    "prettier": "^2.8.4",
-    "globals": "^13.20.0",
-    
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-unicorn": "^46.0.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
-    "eslint-config-turbo": "^0.0.9",
-    "eslint-define-config": "^1.17.0",
-    "eslint-plugin-mdx": "^2.0.5",
-    "eslint-plugin-file-extension-in-import-ts": "^1.0.1",
-    "typescript": "^5.0.2",
-    "tsup": "^6.6.3",
-    "@types/node": "^18.15.3",
-    "eslint": "^8.36.0"
+    "eslint-plugin-storybook": "^0.6.11",
+    "eslint-plugin-unicorn": "^46.0.0",
+    "globals": "^13.20.0",
+    "prettier": "^2.8.7",
+    "tsup": "^6.7.0",
+    "typescript": "^5.0.4"
   },
   "publishConfig": {
     "access": "public"
   },
   "peerDependencies": {
-    "eslint": "^8.36.0"
+    "eslint": "^8.38.0"
   },
   "engines": {
     "node": ">=18.0.0"

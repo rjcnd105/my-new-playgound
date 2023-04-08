@@ -1,0 +1,33 @@
+.root {
+    @apply flex h-11 items-center pl-4 pr-2 py-2.5 bg-background10 rounded-10;
+
+    > input {
+        @apply text-grey90 caret-primary60 ml-2;
+
+        &::placeholder {
+            @apply text-grey20 font-regular;
+        }
+    }
+
+    > input[data-hasvalue="true"] + button {
+        @apply visible opacity-100;
+        transform: scale(1) rotate(0);
+
+    }
+
+    > button {
+        @apply flex items-center justify-center w-8 h-full invisible opacity-0;
+        transition: .16s all;
+        transform: scale(0);
+
+        circle {
+            transition: .1s all;
+        }
+
+        &:hover, &:focus {
+            circle {
+                @apply fill-grey30;
+            }
+        }
+    }
+}

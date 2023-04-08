@@ -1,0 +1,11 @@
+{
+  "name": "@hj/tsconfig",
+  "version": "0.0.1",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.2"
+  }
+}

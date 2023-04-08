@@ -1,7 +1,4 @@
-const { pipe } = require("fp-ts/function");
-const {
-  createVanillaExtractPlugin
-} = require('@vanilla-extract/next-plugin');
+const { createVanillaExtractPlugin } = require("@vanilla-extract/next-plugin");
 
 //** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -13,7 +10,6 @@ const nextConfig = {
   },
 };
 
+const withVanillaExtract = createVanillaExtractPlugin({ devMode: true });
 
-const withVanillaExtract = createVanillaExtractPlugin({devMode: true});
-
-module.exports = withVanillaExtract(nextConfig)
+module.exports = withVanillaExtract(nextConfig);

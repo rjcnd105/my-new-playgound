@@ -2,6 +2,8 @@
   "name": "my-new-playground",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
+  "packageManager": "^pnpm@8.1.0",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
@@ -9,21 +11,32 @@
     "clean": "concurrently \"pnpm run clean:root\" \"pnpm run clean:workspaces\"",
     "clean:root": "rm -rf ./node_modules",
     "clean:workspaces": "turbo run clean",
+    "build:eslint": "turbo run build --filter=@hj/eslint-config",
     "storybook:lib": "turbo run storybook --filter=@hj/react-lib",
     "storybook:playground": "turbo run storybook --filter=playground-nextjs",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
+  "dependencies": {
+    "zod": "^3.21.4",
+    "@effect/io": "^0.19.2",
+    "@effect/data": "^0.11.5",
+    "@effect/schema": "^0.11.1",
+    "@effect/query": "^0.6.0",
+    "@effect/match": "^0.12.1",
+    "@effect/stream": "^0.17.0",
+    "@effect/stm": "^0.10.1"
+  },
   "devDependencies": {
+    "@hj/eslint-config": "workspace:*",
+    "@hj/tsconfig": "workspace:*",
     "@manypkg/cli": "^0.20.0",
-    "concurrently": "^7.6.0",
-    "eslint": "^8.36.0",
-    "my-eslint-config": "workspace:*",
-    "tsup": "^6.6.3",
-    "turbo": "^1.8.3",
-    "typescript": "^5.0.2"
+    "concurrently": "^8.0.1",
+    "eslint": "^8.38.0",
+    "tsup": "^6.7.0",
+    "turbo": "^1.8.8",
+    "typescript": "^5.0.4"
   },
   "engines": {
     "node": ">=18.0.0"
-  },
-  "packageManager": "pnpm@7.18.0"
+  }
 }
