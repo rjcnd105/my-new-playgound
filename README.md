@@ -403,7 +403,7 @@ const myRTE3 = RTE.right(3)
 
 const myRTEAll: ReaderTaskEither<
   unknown,
-  never,
+  never, 
   { value1: number; value2: number; value3: number }
 > = sequenceS(RTE.readerTaskEither)({
   value1: myRTE1,
