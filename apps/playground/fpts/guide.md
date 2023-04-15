@@ -8,6 +8,7 @@ OOP의 클래스랑은 전혀 다른 용어이다. 타입 클래스는 ad hoc(�
 ### 목차 설명
 <font size="2" color="#888">여기서의 코드는 전부 example</font>
 
+
 **constructors:** 다른 타입클래스에서 해당 타입클래스로의 변환, 또는 lifting(pure value에서 타입클래스로 변환)  ```B<A> -> F<A>```, ```A -> F<A>```  
 **combinators:** 타입클래스 내 타입 결합자  ```F<A> + F<B> -> F<A | B>```  
 **destructors:** 타입클래스 유형 반환자 ```F<A> -> A```  
@@ -16,9 +17,10 @@ OOP의 클래스랑은 전혀 다른 용어이다. 타입 클래스는 ad hoc(�
 
 ---
 ### 타입클래스
-**Apply&lt;N...&gt;**   
+**Applicative&lt;N...&gt;**   
 ```ap()```를 제공,  
 인수에 함수를 적용시킴
+
 
 **Functor&lt;N...&gt;**  
 함수를 받아 값 매핑 ```ex: F<A> -> F<B>```  
@@ -113,10 +115,10 @@ T: ```R -> () -> Promise<Either<E, A>>```
 ---
 ### 메소드  
 **map:** 함수를 받아 내부에 적용시킴 - Functor의 구현  
-**ap:** 모나드로 감싸진 함수를 받아 내부에 적용시킴 map의 역순과도 같음 - Apply의 구현  
+**ap:** 모나드로 감싸진 함수를 받아 내부에 적용시킴 map의 역순과도 같음 - Applicative의 구현  
 **apS:** 모나드에 struct(object) 형태로 값을 추가 적용시킴.    
 **flab:** map의 정확한 역순. ap는 값을 모나드로 받지만, flab은 바로 내부로 받음. ap의 간소화 버전인듯.  
-**of:** 순수한 값을 통해 모나드로 lifting - Pointed의 구현  
+**of:** 순수한 값을 통해 Applicative로 lifting - Pointed의 구현  
 **chain:** 현재 모나드로부터 함수를 거쳐 현재 모나드를 리턴함. map, ap와 같이 값이(ex: Either의 left) 통과하지 않으므로 통합적인 재처리에 유용 - Chain의 구현  
 **chain{Monad}K:** 해당 모나드 내부를 디코딩한 값을 받아 {Monad}에 적힌 low-level을 모나드로 lifting함.  
 **Do:** 해당 모나드로 빈 값을 생성.[ Monad를 chain하는 자기 사상을 사용할때 sugar 역할로 많이 쓰임.](https://gcanti.github.io/fp-ts/guides/do-notation.html)  
@@ -124,7 +126,7 @@ T: ```R -> () -> Promise<Either<E, A>>```
 **from{Monad}:**  해당 모나드로부터 현재 모나드로의 변환.  
 **alt:** 대안, 실패할 경우만 실행되며(left, none 등) 실패할 경우에 기존 값과 별개의 다른 Effect를 리턴한다.  
 **fold:** 모나드 내부의 함수를 거쳐 값을 반환. 단, 반환 유형이 같아야 한다. (ex: none => "none", some(v) => "v: ${v}")  
-**foldW:** 모나드 내부의 함수를 거쳐 값을 반환, 반환 유형이 같을 필요가 없다. (ex: none => 0, some(v) => "v: ${v}"가 가능).  W 붙으면 전부 이런 식  
+**foldW:** 모나드 내부의 함수를 거쳐 값을 반환, 반환 유형이 같을 필요가 없다. (ex: none => 0, some(v) => "v: ${v}"가 가능).  W 붙으면 전부 이런 식. W는 Widen의 약자로서 타입을 확장한다는 의미로 사용된다
 **match:** fold와의 차이는 Effect하지 않다는 것. matchE를 사용하면 fold와 같다. fold가 Effect하지 않은 모나드의 경우는 match와 fold가 같다.  
 **apFirst, apSecond:** 두 모나드를 취하고 첫번째(First) 또는 두번째(Second) 모나드를 반환  
 **sequenceArray:** 모나드 F에 대해 ```Array<F<A>>```를 ```F<Array<A>>``` 형태로 변환.  
@@ -138,7 +140,7 @@ T: ```R -> () -> Promise<Either<E, A>>```
 
 ---
 ### 접미사 
-**W:** Less strict version. 타입클래스 내 값 타입을 병합하며, 더 나은 타입 추론을 위해 사용할 수도 있다.  
+**W:** Widen의 약어. Less strict version. 타입클래스 내 값 타입을 병합하며, 더 나은 타입 추론을 위해 사용할 수도 있다.  
 **S:** Structs의 약어. 즉 내부 유형을 객체로 변환  
 **K:** Kleisli의 약어. ```A -> F<B>``` 와 같은 서명을 지님   
 **T:** Transformer의 약어. 모나드 변환기를 의미. 그러나 sequenceT에서의 T는 Tuple을 의미한다.     
