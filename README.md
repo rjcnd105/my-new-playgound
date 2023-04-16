@@ -32,7 +32,11 @@ lifting 함수인 ```of```를 제공.
 
 ## **Monad&lt;N...&gt;**  
 자기사상이 가능한 Functor Monoid.   
-(TODO : 자기사상이란 ?)
+
+자기사상(Endomorphism)이란 어떤 카테고리 내의 객체 A에서 자기 자신인 객체 A로 가는 사상(mapping)을 말한다. 
+
+이러한 사상은 객체 A의 구조를 보존한다는 특징이 있다. 즉 타입이 변하지 않고 보존된다
+
 
 ```chain(flatmap), of, map, ap```을 제공  
 이것들을 가지고 있으면 Monad라고 보면 된다. (ex: Option Monad, Either Monad ...)  
