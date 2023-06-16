@@ -1,0 +1,59 @@
+{
+  "compilerOptions": {
+    "moduleDetection": "force",
+    "downlevelIteration": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "skipLibCheck": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "preserveSymlinks": true,
+    "moduleResolution": "node",
+    "noEmit": false,
+    "lib": [
+      "ESNext",
+      "DOM",
+      "WebWorker"
+    ],
+    "sourceMap": true,
+    "declarationMap": true,
+    "strict": true,
+    "noImplicitReturns": false,
+    "noUnusedLocals": true, 
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+    "noEmitOnError": false,
+    "noErrorTruncation": true,
+    "allowJs": false,
+    "checkJs": false,
+    "forceConsistentCasingInFileNames": true,
+    "stripInternal": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUncheckedIndexedAccess": false,
+    "strictNullChecks": true,
+    "baseUrl": ".",
+    "target": "ESNext",
+    "module": "NodeNext",
+    "incremental": true,
+    "removeComments": false,
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules"
+    ],
+    "plugins": [
+      {
+        "name": "@effect/language-service",
+        "diagnostics": {
+          "1002": "none"
+        }
+      }
+    ]
+  },
+  "include": [],
+  "exclude": [
+    "build",
+    "lib"
+  ]
+}

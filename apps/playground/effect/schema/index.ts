@@ -1,8 +1,7 @@
-import * as S from "@effect/schema";
-import { pipe } from "@fp-ts/core/Function";
-
+import { pipe } from "@effect/data/Function";
+import * as S from "@effect/schema/Schema";
+import { transform } from "@effect/schema/Schema";
 import z from "zod";
-import { transform } from "@effect/schema";
 
 const zz = z.object({
   id: z.string().refine((a) => a === "dd"),
@@ -15,13 +14,13 @@ const a = pipe(
       transform(
         S.number,
         (a) => a.length,
-        (s) => `${s}`,
+        (s) => `${s}`
       ),
-      S.description("id"),
+      S.description("id")
     ),
   }),
   S.filter((a) => a.id > 2),
-  S.message(() => "hihi"),
+  S.message(() => "hihi")
 );
 
 const shape = S.getPropertySignatures(a);
@@ -41,7 +40,7 @@ b.A; /*?*/
 a.ast; /*?*/
 const getProperty = <A, K extends keyof A>(
   s: S.Schema<A>,
-  name: { [key in keyof A]: Schema<A[key]> }[K],
+  name: { [key in keyof A]: Schema<A[key]> }[K]
 ): {} => {
   if (s.ast._tag === "Refinement") {
   }
