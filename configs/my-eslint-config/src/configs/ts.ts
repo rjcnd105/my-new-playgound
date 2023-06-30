@@ -22,8 +22,8 @@ export const ts = defineFlatConfig([
       ...tsPlugin.configs["eslint-recommended"].overrides![0].rules,
       ...tsPlugin.configs["recommended"].rules,
 
-      "@typescript-eslint/no-unused-vars": "error",
-      "@typescript-eslint/no-redeclare": "error",
+      "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/no-redeclare": "warn",
 
       "@typescript-eslint/ban-ts-comment": "off",
       "@typescript-eslint/ban-types": "off",

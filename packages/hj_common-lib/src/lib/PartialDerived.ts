@@ -1,6 +1,9 @@
-import { ExceptForDeepComparison } from "../types/ExceptForDeepComparison";
-import { PartialDeepProps } from "../types/utilityTypes";
-import { DeepMerge, deepMerge } from "../utils/recordUtils/recordDeepMerge";
+import { type ExceptForDeepComparison } from "../types/ExceptForDeepComparison";
+import { type PartialDeepProps } from "../types/utilityTypes";
+import {
+  type DeepMerge,
+  deepMerge,
+} from "../utils/recordUtils/recordDeepMerge";
 
 export const target = Symbol.for("target");
 
@@ -16,6 +19,7 @@ export type GetDerived<P> = P extends PartialDerived<unknown, infer B>
 
 type Do<T> = PartialDerived<T, {}>;
 
+// eslint-disable-next-line @typescript-eslint/no-redeclare,@typescript-eslint/no-unused-vars
 export const Do = <A>(): Do<A> => ({
   [target]: {} as A,
   derived: {},
@@ -31,7 +35,7 @@ export const of =
 export const changeDerived =
   <T, A extends PartialDeepProps<T>>(partialDerived: PartialDerived<T, A>) =>
   <B extends PartialDeepProps<T>>(
-    chainDerivedFn: (partialDerived: A) => B,
+    chainDerivedFn: (partialDerived: A) => B
   ): PartialDerived<T, B> => ({
     [target]: partialDerived[target],
     derived: chainDerivedFn(partialDerived.derived),
@@ -40,7 +44,7 @@ export const changeDerived =
 export const derive =
   <T, A extends PartialDeepProps<T>>(partialImpl: PartialDerived<T, A>) =>
   <DA extends PartialDeepProps<ExceptForDeepComparison<T, A, false>>>(
-    except: DA,
+    except: DA
   ) =>
     ({
       [target]: partialImpl[target],

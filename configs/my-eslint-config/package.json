@@ -7,11 +7,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf dist && tsc --build --force tsconfig.build.json",
-    "build-p": "concurrently \"pnpm run build:esm\" \"pnpm run build:cjs\"",
-    "build:esm": "tsc --build --force tsconfig.esm.build.json",
-    "build:cjs": "tsc --build --force tsconfig.cjs.build.json",
-    "build-bundle": "tsup"
+    "build": "rm -rf dist && tsc --build --force tsconfig.build.json"
   },
   "devDependencies": {
     "@babel/core": "^7.22.5",
