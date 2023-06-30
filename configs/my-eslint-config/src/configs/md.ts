@@ -1,10 +1,11 @@
+import { defineFlatConfig } from "eslint-define-config";
 // @ts-ignore
 import markdownPlugin from "eslint-plugin-markdown";
 
 import { GLOB_MARKDOWN } from "../shared.js";
 
-export const md = [
-  { 
+export const md = defineFlatConfig([
+  {
     files: [GLOB_MARKDOWN],
     plugins: {
       markdown: markdownPlugin,
@@ -46,4 +47,4 @@ export const md = [
       "mdx/language-mapper": {},
     },
   },
-];
+]);

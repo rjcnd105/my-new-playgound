@@ -1,11 +1,10 @@
-// @ts-ignore
-import { type FlatESLintConfig } from "eslint-define-config";
+import { defineFlatConfig } from "eslint-define-config";
 // @ts-ignore
 import * as importPlugin from "eslint-plugin-import";
 // @ts-ignore
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 
-export const imports = {
+export const imports = defineFlatConfig({
   plugins: {
     import: importPlugin,
     "simple-import-sort": simpleImportSort,
@@ -22,4 +21,4 @@ export const imports = {
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
   },
-} as FlatESLintConfig;
+});

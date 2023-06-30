@@ -1,10 +1,10 @@
 // @ts-ignore
 import prettierConfig from "eslint-config-prettier";
-import { type FlatESLintConfig } from "eslint-define-config";
+import { defineFlatConfig } from "eslint-define-config";
 // @ts-ignore
 import prettierPlugin from "eslint-plugin-prettier";
 
-export const prettier = {
+export const prettier = defineFlatConfig({
   plugins: {
     prettier: prettierPlugin,
   },
@@ -13,4 +13,4 @@ export const prettier = {
     ...prettierPlugin.configs.recommended.rules,
     "prettier/prettier": "warn",
   },
-} as FlatESLintConfig;
+});

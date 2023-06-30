@@ -1,6 +1,0 @@
-{
-  "extends": "@hj/tsconfig/nextjs.json",
-  "compilerOptions": {
-    "baseUrl": "."
-  }
-} 

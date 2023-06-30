@@ -1,8 +1,8 @@
-import { type FlatESLintConfig } from "eslint-define-config";
+import { defineFlatConfig } from "eslint-define-config";
 
 import { GLOB_EXCLUDE, GLOB_JSX } from "../shared.js";
 
-export const react = [
+export const react = defineFlatConfig([
   "plugin:react/recommended",
   "plugin:react-hooks/recommended",
   {
@@ -16,4 +16,4 @@ export const react = [
       },
     },
   },
-] as FlatESLintConfig[];
+]);

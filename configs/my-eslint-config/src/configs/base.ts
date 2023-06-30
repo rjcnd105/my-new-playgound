@@ -1,10 +1,11 @@
+import { defineFlatConfig } from "eslint-define-config";
 import globals from "globals";
 
 // import { GLOB_EXCLUDE } from "../shared";
 // @ts-ignore
 import { imports } from "../parts/index.js";
 
-export const base = [
+export const base = defineFlatConfig([
   "eslint:recommended",
   {
     languageOptions: {
@@ -78,4 +79,4 @@ export const base = [
     },
   },
   imports,
-];
+]);

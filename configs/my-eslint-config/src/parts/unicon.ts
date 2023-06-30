@@ -1,8 +1,8 @@
-import { type FlatESLintConfig } from "eslint-define-config";
+import { defineFlatConfig } from "eslint-define-config";
 // @ts-ignore
 import unicornPlugin from "eslint-plugin-unicorn";
 
-export const unicorn = {
+export const unicorn = defineFlatConfig({
   plugins: {
     unicorn: unicornPlugin,
   },
@@ -53,4 +53,4 @@ export const unicorn = {
     "unicorn/prefer-type-error": "error",
     "unicorn/throw-new-error": "error",
   },
-} as FlatESLintConfig;
+});

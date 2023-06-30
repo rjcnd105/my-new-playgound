@@ -14,7 +14,6 @@
     "@effect/rpc": "^0.0.0",
     "@effect/stream": "^0.20.0",
     "arktype": "^1.0.14-alpha",
-    "eslint": "^8.38.0",
     "zod": "^3.21.4"
   },
   "devDependencies": {

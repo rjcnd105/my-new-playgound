@@ -1,12 +1,12 @@
 import tsPlugin from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
-import { type FlatESLintConfig } from "eslint-define-config";
+import { defineFlatConfig } from "eslint-define-config";
 
 import { declare, test } from "../parts/index.js";
 import { GLOB_TS, GLOB_TSX } from "../shared.js";
 
 // https://stackoverflow.com/questions/65873101/node-requires-file-extension-for-import-statement/65874173#65874173
-export const ts = [
+export const ts = defineFlatConfig([
   {
     files: [GLOB_TS, GLOB_TSX],
     languageOptions: {
@@ -39,4 +39,4 @@ export const ts = [
   },
   declare,
   test,
-] as FlatESLintConfig[];
+]);

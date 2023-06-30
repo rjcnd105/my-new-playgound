@@ -1,8 +1,8 @@
-import { type FlatESLintConfig } from "eslint-define-config";
+import { defineFlatConfig } from "eslint-define-config";
 
-export const test = {
+export const test = defineFlatConfig({
   files: ["**/*.{test,spec}.ts?(x)"],
   rules: {
     "no-unused-expressions": "off",
   },
-} as FlatESLintConfig;
+});
