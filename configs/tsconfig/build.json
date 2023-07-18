@@ -1,13 +1,15 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "ES2020",
+    "module": "esnext",
+    "target": "esnext",
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
     "noEmitOnError": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
+    "moduleResolution": "NodeNext",
     "noEmit": false,
     "allowJs": true,
     "strict": true

@@ -1,6 +1,6 @@
 // object 값들의 타입을 추출
 // M 에 N 타입 덮어쓰기
-import { PartialDeep } from "type-fest";
+import { type PartialDeep } from "type-fest";
 
 export type Merge<M, N> = Omit<M, Extract<keyof M, keyof N>> & N;
 
@@ -28,7 +28,7 @@ export type PartialRequired<A, B extends keyof A> = C<
 
 // 첫번째 파라미터 추출
 export type FirstParameter<T extends (...args: any) => any> = T extends (
-  arg1: infer P,
+  arg1: infer P
 ) => any
   ? P extends {}
     ? P
@@ -44,7 +44,7 @@ type AnyFunction = (...args: any[]) => any;
 
 export type MergeFirstParameter<
   M extends AnyFunction,
-  N extends AnyFunction,
+  N extends AnyFunction
 > = Merge<FirstParameter<M>, FirstParameter<N>>;
 
 // 전체 필드 nullish 제외
