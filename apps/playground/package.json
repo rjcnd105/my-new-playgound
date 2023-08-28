@@ -23,7 +23,8 @@
   },
   "devDependencies": {
     "@hj/eslint-config": "workspace:*",
-    "type-fest": "^4.0.0"
+    "type-fest": "^4.0.0",
+    "@types/node": "^20.4.4"
   },
   "keywords": [],
   "author": "",
