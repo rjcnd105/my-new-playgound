@@ -1,0 +1,120 @@
+.root[data-uri="inputField/input"] {
+  @apply relative w-full h-16 border-1 border-gray40 rounded-2;
+
+  :global {
+    /* 자주쓰는 컴포넌트다보니 트렌지션 성능을 높이기 위해 전부 absolute로 띄웠어요 */
+    input,
+    label {
+      @apply absolute top-1/2 -translate-y-1/2 left-4;
+    }
+
+    label {
+      @apply text-gray10;
+      transition: 0.2s all;
+    }
+
+    input {
+      @apply w-[calc(100%-2rem)];
+      transition: 0.2s all;
+      font-weight: 600;
+      
+      &[type="password"] {
+        @apply pr-12;
+      }
+
+      &::placeholder {
+        /* label이 placeholder을 대체할 것이므로 숨김 처리, 스크린리더가 읽어야 하므로 display:none이나 visibility:hidden은 하면 안됌 */
+        @apply opacity-0 h-0 w-0 overflow-hidden;
+      }
+
+      &:not(&:placeholder-shown) {
+        @apply -translate-y-[calc(50%-.55rem)];
+      }
+    }
+
+    input:not(input:placeholder-shown) + label {
+      @apply -translate-y-[calc(50%+.9rem)] text-caption text-primary;
+    }
+    
+    button {
+      @apply absolute top-1/2 -translate-y-1/2 right-4 w-8 h-8;
+        background-image: url("/icons/password_disabled.svg");
+      
+      &[aria-pressed="true"] {
+        background-image: url("/icons/password_active.svg");
+      }
+    }
+  }
+
+  &[data-focus="true"] {
+    @apply border-primary;
+
+    :global { 
+      input {
+        @apply -translate-y-[calc(50%-.55rem)];
+      }
+      label {
+        @apply -translate-y-[calc(50%+.9rem)] text-caption text-primary;
+      }
+    }
+  }
+
+  &[aria-invalid="true"] {
+    @apply border-error;
+
+    :global {
+      label {
+        @apply !text-error;
+      }
+    }
+  }
+}
+.root[data-uri="inputSearch/input"] {
+  @apply relative w-full h-16 border-1 rounded-2 border-primary;
+
+  :global {
+    /* 자주쓰는 컴포넌트다보니 트렌지션 성능을 높이기 위해 전부 absolute로 띄웠어요 */
+    input,
+    label {
+      @apply absolute top-1/2 -translate-y-1/2 left-4;
+    }
+
+    label {
+      @apply text-primary;
+    }
+
+    input {
+      @apply w-[calc(100%-2rem)];
+      
+      &::placeholder {
+        /* label이 placeholder을 대체할 것이므로 숨김 처리, 스크린리더가 읽어야 하므로 display:none이나 visibility:hidden은 하면 안됌 */
+        @apply opacity-0 h-0 w-0 overflow-hidden;
+      }
+      
+    }
+
+    input:not(input:placeholder-shown) + label {
+      @apply hidden;
+    }
+    
+    button {
+      @apply absolute top-1/2 -translate-y-1/2 right-4 w-6 h-6 bg-no-repeat bg-center;
+        background-image: url("/icons/search.svg");
+
+      &[aria-pressed="true"] {
+        background-image: url("/icons/search.svg");
+      }
+    }
+  }
+
+  /* input type이 search일 때 default로 생기는 x를 지웁니다. */
+  input[type="search"]::-webkit-search-cancel-button {
+    display: none;
+  }
+  input[type="search"]::-moz-search-cancel {
+    display: none;
+  }
+  input[type="search"]::-ms-clear {
+    display: none;
+  }
+}
