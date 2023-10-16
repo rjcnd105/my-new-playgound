@@ -6,25 +6,26 @@
   "main": "./dist/esm/index.js",
   "types": "./dist/types/index.d.ts",
   "dependencies": {
-    "@effect/data": "^0.15.1",
-    "@effect/io": "^0.34.0",
-    "@effect/match": "^0.28.0",
+    "@effect/data": "^0.18.7",
+    "@effect/io": "^0.41.2",
+    "@effect/match": "^0.40.0",
     "@effect/query": "^0.7.0",
-    "@effect/schema": "^0.28.0",
-    "@fp-ts/optic": "^0.8.0",
+    "@effect/schema": "^0.42.0",
+    "@fp-ts/optic": "^0.10.0",
     "@hj/common-lib": "workspace:^",
     "@hj/fp-ts-lib": "workspace:^",
-    "@sinclair/typebox": "^0.28.16",
-    "axios": "^1.4.0",
-    "eslint": "^8.45.0",
+    "@sinclair/typebox": "^0.31.17",
+    "axios": "^1.5.1",
+    "eslint": "^8.51.0",
     "fast-equals": "^5.0.1",
-    "fp-ts": "^2.16.0",
-    "zod": "^3.21.4"
+    "fp-ts": "^2.16.1",
+    "xstate": "^5.0.0-beta.33",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@hj/eslint-config": "workspace:*",
-    "type-fest": "^4.0.0",
-    "@types/node": "^20.4.4"
+    "@types/react": "^18.2.27",
+    "type-fest": "^4.4.0"
   },
   "keywords": [],
   "author": "",

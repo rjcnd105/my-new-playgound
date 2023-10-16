@@ -1,8 +1,33 @@
 {
   "extends": "./build.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "NodeNext",
     "noUnusedLocals": false,
     "noEmit": true,
-    "preserveSymlinks": true
+    "preserveSymlinks": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "allowImportingTsExtensions": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "incremental": true,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "useUnknownInCatchVariables": true,
+    "emitDecoratorMetadata": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitOverride": true,
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "noEmitOnError": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    
+    "allowJs": true,
+    "strict": true
   }
 }

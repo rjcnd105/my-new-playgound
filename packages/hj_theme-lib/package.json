@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@pandacss/dev": "^0.7.0"
+    "@pandacss/dev": "^0.15.5"
   }
 }

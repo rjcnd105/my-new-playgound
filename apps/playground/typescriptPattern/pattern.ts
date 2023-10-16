@@ -1,6 +1,6 @@
 // 값이 never이면 추출이 되지 않는다는 점을 잘 이용하라! 해당 매칭되는 타입을 제외할때 사용
 
-import { ComponentType } from "react";
+import { type ComponentType } from "react";
 
 /***
  * pattern: {}형태로 만든 후 []로 추출

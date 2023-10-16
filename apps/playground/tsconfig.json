@@ -1,5 +1,12 @@
 {
-  "extends": "../../configs/tsconfig/base.json",
+  "extends": "../../configs/tsconfig/app.json",
   "include": ["**/*.d.ts", "**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "paths": {
+      ":/*": [
+        "src/*"
+      ]
+    }
+  }
 }

@@ -4,14 +4,11 @@ import * as Str from "@effect/data/String";
 const d = Str.takeLeft(6)("12345678"); /*?*/
 // const d = Str.takeLeft(6);
 
-// const dd = ReadonlyArray.zipWith([4, 5, 6], (a, b) => { 
+// const dd = ReadonlyArray.zipWith([4, 5, 6], (a, b) => {
 //   console.log("a", a);
 //   console.log("b", b);
 // })([1, 2, 3]);
-const d3d = ReadonlyArray.intersection((a, b) => {
-  console.log("a", a);
-  console.log("b", b);
-})([4, 5, 6], [1, 2, 3]); /*?*/
+const d3d = ReadonlyArray.intersection([4, 5, 6], [1, 2, 3, 4]); /*?*/
 
 const sentences = [
   {

@@ -1,0 +1,17 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`login api test > 스키마 Fail 테스트 1`] = `
+{
+  "code": null,
+  "data": {
+    "academyId": "D34345",
+    "id": "develop02",
+    "relationId": "T79880",
+    "token": "480cb097-4d17-478f-be5f-9e008ee4543d",
+    "userType": "TEACHER",
+  },
+  "message": null,
+  "statusCode": 200,
+  "type": "API_RESPONSE_SUCCESS",
+}
+`;
