@@ -14,14 +14,14 @@
     "@effect/data": "^0.18.7",
     "@effect/io": "^0.41.2",
     "@effect/match": "^0.40.0",
-    "@effect/schema": "^0.42.0",
+    "@effect/schema": "^0.45.3",
     "@fp-ts/core": "^0.2.1",
-    "@fp-ts/optic": "^0.10.0",
+    "@fp-ts/optic": "^0.13.0",
     "deepmerge-ts": "^5.1.0",
     "fast-equals": "^5.0.1"
   },
   "devDependencies": {
-    "type-fest": "^4.4.0",
+    "type-fest": "^4.5.0",
     "typescript": "^5.2.2"
   }
 }

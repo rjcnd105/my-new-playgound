@@ -25,22 +25,22 @@
     "@effect/io": "^0.41.2",
     "@effect/match": "^0.40.0",
     "@effect/query": "^0.7.0",
-    "@effect/rpc": "^0.11.1",
-    "@effect/schema": "^0.42.0",
+    "@effect/rpc": "^0.14.0",
+    "@effect/schema": "^0.45.3",
     "@effect/stm": "^0.25.0",
     "@effect/stream": "^0.37.1",
-    "@effect/typeclass": "^0.9.0",
+    "@effect/typeclass": "^0.12.0",
     "axios": "^1.5.1",
-    "effect": "^2.0.0-next.47",
+    "effect": "2.0.0-next.50",
     "zod": "^3.22.4"
   },
   "devDependencies": {
     "@hj/eslint-config": "workspace:*",
     "@manypkg/cli": "^0.21.0",
-    "concurrently": "^8.2.1",
+    "concurrently": "^8.2.2",
     "eslint": "^8.51.0",
     "tsup": "^7.2.0",
-    "turbo": "^1.10.15",
+    "turbo": "^1.10.16",
     "typescript": "^5.2.2"
   },
   "engines": {

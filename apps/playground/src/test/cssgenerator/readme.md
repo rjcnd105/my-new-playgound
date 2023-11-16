@@ -1,0 +1,1 @@
+"prepare": "tsc ./src/style/gencssvar.ts",
