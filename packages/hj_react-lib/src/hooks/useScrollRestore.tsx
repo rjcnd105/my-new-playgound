@@ -12,16 +12,14 @@ export const useScrollRestore = <ScrollEl extends HTMLElement, InnerEl extends H
   const _scrollRef = useRef<ScrollEl | null>(null)
   const _innerRef = useRef<InnerEl | null>(null)
 
-  const _scrollEvent = useRef((e) => {
-    if (e.currentTarget instanceof HTMLElement) scrollValue.current = e.currentTarget.scrollTop
-  })
-
   const initScroll = useCallback(() => {
     if (!_scrollRef.current || !_innerRef.current) return
     _scrollRef.current.scrollTop = defaultScrollValue.current
     _innerRef.current.style.transform = `translateY(0px)`
 
-    _scrollRef.current.addEventListener('scroll', _scrollEvent.current)
+    _scrollRef.current.onscroll = (e) => {
+      if (e.currentTarget instanceof HTMLElement) scrollValue.current = e.currentTarget.scrollTop
+    }
   }, [])
   const scrollRef = useCallback<RefCallback<ScrollEl>>((el) => {
     _scrollRef.current = el
