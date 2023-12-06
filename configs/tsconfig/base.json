@@ -7,6 +7,7 @@
     "moduleResolution": "NodeNext",
     "noUnusedLocals": false,
     "noEmit": true,
+    "lib": ["DOM", "ES2023"],
     "preserveSymlinks": true,
     "isolatedModules": true,
     "verbatimModuleSyntax": true,

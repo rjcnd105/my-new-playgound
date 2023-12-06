@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "ESNext",
-    "module": "ESNext",
+    "target": "esnext",
+    "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "lib": ["ESNext"],
     "types": ["node"],

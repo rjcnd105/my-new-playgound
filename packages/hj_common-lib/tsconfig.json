@@ -3,7 +3,8 @@
 
   "compilerOptions": {
     "disableSizeLimit": true,
-    "declaration": false
+    "declaration": false,
+    
   },
   "include": [
     "src/**/*"
