@@ -17,8 +17,8 @@ export interface Codec<out A, out B> extends CodecImpl<A, B> {
   encode(a: ReturnType<this[TypeId]['_A']>): ReturnType<this[TypeId]['_B']>
   decode(b: ReturnType<this[TypeId]['_B']>): ReturnType<this[TypeId]['_A']>
 
-  forArray<A, B>(codec: Codec<A, B>): Codec<A[], B[]>
-  inverse<A, B>(codec: Codec<A, B>): Codec<B, A>
+  forArray<A, B>(this: Codec<A, B>): Codec<A[], B[]>
+  inverse<A, B>(this: Codec<A, B>): Codec<B, A>
 }
 const isCodecImpl = (codec: unknown): codec is CodecImpl =>
   isObject(codec) && 'encode' in codec && 'decode' in codec
