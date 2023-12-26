@@ -1,10 +1,11 @@
-import { type RefCallback, useCallback, useEffect, useMemo, useRef } from 'react'
+import { type RefCallback } from 'react'
+import { useCallback, useEffect, useMemo, useRef } from 'react' 
 
 export const makeUseSessionScrollRestore = <K extends string>(key: K) => {
   let _scroll = sessionStorage.getItem(key) ? Number(sessionStorage.getItem(key)) : 0
   let _tempScroll = _scroll
 
-  const initialTransform = 'translateY(0px)'
+  const initialTransform = 'translateY(0px)' 
 
   const _setSessionScrollValue = (scrollValue: number) => {
     _scroll = scrollValue
