@@ -80,3 +80,23 @@ export type OmitNever<T> = {
 };
 
 export type PartialDeepProps<P> = PartialDeep<P> | Partial<P> | {};
+
+
+/**
+ * union -> { [k in keyof union]: string} 타입 변환
+ * @example
+ * MakeObjFromKeys<'studentId' | 'favoriteId', string>
+ * => { studentId: string; favoriteId: string }
+ */
+export type MakeObjFromKeys<Keys extends string, V> = { [K in Keys]: V }
+
+
+/**
+ * @example
+ * type T1 = UnionSome<true | true | true, false> -> true
+ * type T2 = UnionSome<false | true | true, false> -> true
+ * type T3 = UnionSome<false | false | false, false> -> false
+ * type T4 = UnionSome<'a' | 'b' | 'c', 'a'> -> true
+ * type T5 = UnionSome<'c' | 'b' | 'c', 'a'> -> false
+ */
+type UnionSome<T, B> = (T extends B ? true : never) extends never ? false : true
