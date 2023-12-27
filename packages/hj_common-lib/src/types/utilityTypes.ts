@@ -100,3 +100,28 @@ export type MakeObjFromKeys<Keys extends string, V> = { [K in Keys]: V }
  * type T5 = UnionSome<'c' | 'b' | 'c', 'a'> -> false
  */
 type UnionSome<T, B> = (T extends B ? true : never) extends never ? false : true
+
+
+/**
+ * @example
+ * GetRealStructKey<'age'> 
+ *   -> 'age' | 'name'
+ * GetRealStructKey<'age' | 'name'> 
+ *   -> 'age' | 'name'
+ * GetRealStructKey<'age' | 'name' | string> 
+ *   -> never
+ */
+type GetRealStructKey<K extends PropertyKey> = {} extends Record<K, unknown> ? never : K
+
+
+/**
+ * @example
+ * GetRealStructKeys<{
+ *   [K: number]: string
+ *   age: number
+ * } & {[K in 'name' | 'address']: string}>
+ * -> 'age' | 'name' | 'address'
+ */
+type GetRealStructKeys<Record> = (() => {
+  [K in keyof Record as GetRealStructKey<K>]: unknown
+}) extends () => infer R ? keyof R : never
