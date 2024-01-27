@@ -125,3 +125,23 @@ type GetRealStructKey<K extends PropertyKey> = {} extends Record<K, unknown> ? n
 type GetRealStructKeys<Record> = (() => {
   [K in keyof Record as GetRealStructKey<K>]: unknown
 }) extends () => infer R ? keyof R : never
+
+
+
+
+// test
+
+type S1 = {
+  a?: string
+}
+type S2 = {
+  a: string
+}
+
+type F1 = S1['a']
+type F2 = S2['a']
+
+type FF1 = undefined extends F1 ? never : F1
+// string
+type FF2 = undefined extends F2 ? never : F2
+// never
