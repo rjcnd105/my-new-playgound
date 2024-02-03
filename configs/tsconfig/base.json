@@ -1,5 +1,4 @@
 {
-  "extends": "./build.json",
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "module": "esnext",
