@@ -16,26 +16,25 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "dependencies": {
-    "@effect/query": "^0.7.0",
     "@effect/rpc": "^0.28.14",
     "@effect/schema": "^0.64.10",
-    "@effect/stm": "^0.25.0",
-    "@effect/stream": "^0.37.1",
     "@effect/typeclass": "^0.23.10",
     "axios": "^1.6.8",
     "effect": "2.4.10",
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "react": "canary",
+    "react-dom": "canary",
     "@hj/eslint-config": "^0.0.1",
     "@manypkg/cli": "^0.21.3",
     "concurrently": "^8.2.2",
-    "eslint": "^8.57.0",
+    "@eslint/js": "^9.0.0-beta.2",
     "tsup": "^8.0.2",
     "turbo": "^1.12.5",
     "typescript": "^5.4.3"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=21.0.0"
   }
 }

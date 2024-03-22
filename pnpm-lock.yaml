@@ -8,21 +8,12 @@ importers:
 
   .:
     dependencies:
-      '@effect/query':
-        specifier: ^0.7.0
-        version: 0.7.0
       '@effect/rpc':
         specifier: ^0.28.14
         version: 0.28.14(@effect/platform@0.48.14)(@effect/schema@0.64.10)(effect@2.4.10)
       '@effect/schema':
         specifier: ^0.64.10
         version: 0.64.10(effect@2.4.10)(fast-check@3.16.0)
-      '@effect/stm':
-        specifier: ^0.25.0
-        version: 0.25.0(@effect/data@0.18.7)(@effect/io@0.41.2)
-      '@effect/stream':
-        specifier: ^0.37.1
-        version: 0.37.1(@effect/data@0.18.7)(@effect/io@0.41.2)
       '@effect/typeclass':
         specifier: ^0.23.10
         version: 0.23.10(effect@2.4.10)
@@ -36,6 +27,9 @@ importers:
         specifier: ^3.22.4
         version: 3.22.4
     devDependencies:
+      '@eslint/js':
+        specifier: ^9.0.0-beta.2
+        version: 9.0.0-beta.2
       '@hj/eslint-config':
         specifier: ^0.0.1
         version: link:configs/my-eslint-config
@@ -45,9 +39,12 @@ importers:
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
-      eslint:
-        specifier: ^8.57.0
-        version: 8.57.0
+      react:
+        specifier: canary
+        version: 18.3.0-canary-a4939017f-20240320
+      react-dom:
+        specifier: canary
+        version: 18.3.0-canary-a4939017f-20240320(react@18.3.0-canary-a4939017f-20240320)
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(typescript@5.4.3)
@@ -2760,26 +2757,6 @@ packages:
       fast-check: 3.16.0
     dev: false
 
-  /@effect/stm@0.25.0(@effect/data@0.18.7)(@effect/io@0.41.2):
-    resolution: {integrity: sha512-iHq/nRIH0wNxCpxm46ALxRTAJJO6YaA29sYrqtYdClEYVy66+zn79BgSVc8IgX1MdOjoEf73Ayp6wOinsKB7RQ==}
-    peerDependencies:
-      '@effect/data': ^0.18.6
-      '@effect/io': ^0.41.0
-    dependencies:
-      '@effect/data': 0.18.7
-      '@effect/io': 0.41.2(@effect/data@0.18.7)
-    dev: false
-
-  /@effect/stream@0.37.1(@effect/data@0.18.7)(@effect/io@0.41.2):
-    resolution: {integrity: sha512-dujPqjKF+Nfn3agD8UerujvtzYk7Z1E9BhwazR6R1P53y/pz4voxZJJXj8v0/cTyn0bbO5dwYCq1K31FXSiN2Q==}
-    peerDependencies:
-      '@effect/data': ^0.18.6
-      '@effect/io': ^0.41.1
-    dependencies:
-      '@effect/data': 0.18.7
-      '@effect/io': 0.41.2(@effect/data@0.18.7)
-    dev: false
-
   /@effect/typeclass@0.23.10(effect@2.4.10):
     resolution: {integrity: sha512-Q2iRB+kBihkSHjYgDIhOESC5mmGmqWOnjeorep0nYVGmEvmdzvjhpII+EsTUV22/dm8hwIpl12+pAl7zwM2fzw==}
     peerDependencies:
@@ -3199,6 +3176,11 @@ packages:
   /@eslint/js@8.57.0:
     resolution: {integrity: sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+
+  /@eslint/js@9.0.0-beta.2:
+    resolution: {integrity: sha512-sdooseh/ui3Nx2q6Bd8V3nbN7ypEemAeSWZm5WqQUsN8PNWmKnfonfj6q0fh1FOpcDgxhHTyjPNd5CfFttEVtw==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    dev: true
 
   /@fal-works/esbuild-plugin-global-externals@2.1.2:
     resolution: {integrity: sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==}
@@ -15600,6 +15582,15 @@ packages:
       react: 18.2.0
       scheduler: 0.23.0
 
+  /react-dom@18.3.0-canary-a4939017f-20240320(react@18.3.0-canary-a4939017f-20240320):
+    resolution: {integrity: sha512-rLXkEhFDycQxzrHHbSUcw+CTvNRYj8fngYjD1W+vR96hvMp8e87KAoc1P36kj8NR6lOGNdirKG6ms90biGr8Gg==}
+    peerDependencies:
+      react: 18.3.0-canary-a4939017f-20240320
+    dependencies:
+      react: 18.3.0-canary-a4939017f-20240320
+      scheduler: 0.24.0-canary-a4939017f-20240320
+    dev: true
+
   /react-element-to-jsx-string@15.0.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-UDg4lXB6BzlobN60P8fHWVPX3Kyw8ORrTeBtClmIlGdkOOE+GYQSFvmEU5iLLpwp/6v42DINwNcwOhOLfQ//FQ==}
     peerDependencies:
@@ -15714,6 +15705,11 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
+
+  /react@18.3.0-canary-a4939017f-20240320:
+    resolution: {integrity: sha512-k69hRwG80HFLvN6Onx4dvyneOAiAkFqJvkfgDnlfjdO6vclW/upPJg8frkS0yukAP+MKHt/IFC9P41FYbWDVdg==}
+    engines: {node: '>=0.10.0'}
+    dev: true
 
   /read-cache@1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
@@ -16192,6 +16188,10 @@ packages:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
       loose-envify: 1.4.0
+
+  /scheduler@0.24.0-canary-a4939017f-20240320:
+    resolution: {integrity: sha512-dLZgkcUhkj+ZEESvDLJzpPKHHzs71YR49HtiFx6vnMHLZ89Ihw2Rlbd3ZXnkd/BAmd62hLYJuAHGdqq8SGTZXQ==}
+    dev: true
 
   /schema-utils@2.7.1:
     resolution: {integrity: sha512-SHiNtMOUGWBQJwzISiVYKu82GiV4QYGePp3odlY1tuKO7gPtphAT5R/py0fA6xtbgLL/RvtJZnU9b8s0F1q0Xg==}
