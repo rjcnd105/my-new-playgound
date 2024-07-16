@@ -71,6 +71,7 @@ export const makeApiClient = (options: Options) => {
           },
         );
 
+        
         const res = axiosInstance(parsedPath, finalOptions);
 
         return res

@@ -1,6 +1,0 @@
-packages:
-  - "apps/**"
-  - "packages/**"
-  - "configs/**"
-  - "!examples/test_styled"
-  - '!**scratch/**' 
