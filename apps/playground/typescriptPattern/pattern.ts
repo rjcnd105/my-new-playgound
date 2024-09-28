@@ -116,3 +116,9 @@ type Tuple = UnionToTuple<
 type PageComponent<T = {}> = {
   onMount?(): void;
 } & ComponentType<T>;
+
+// 템플릿 리터럴 타입 추론 + any string 허용 trick - (string & {})
+type TemplateLiteralWithAnyString = "AAA" | "BBB" | (string & {});
+
+const aaa: TemplateLiteralWithAnyString = "AAA";
+const ccc: TemplateLiteralWithAnyString = "CCC";

@@ -5,11 +5,11 @@ import { Day } from "src/lib/Calendar/Day.js";
 import { Month } from "src/lib/Calendar/Month.js";
 import { Year } from "src/lib/Calendar/Year.js";
 
-type ConstructorParams<SelectDateT, ViewDateT> = {
+interface ConstructorParams<SelectDateT, ViewDateT> {
   selectedSuper: SelectDateT;
   superRange: SelectDateT[];
   extractSubRange(select: SelectDateT): ViewDateT[];
-};
+}
 
 export class Calendar<SelectDateT, ViewDateT> {
   public superRange: SelectDateT[] = [];

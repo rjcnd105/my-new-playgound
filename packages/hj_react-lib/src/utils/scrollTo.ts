@@ -77,7 +77,7 @@ export const EasingFunctions = {
 export interface IOptions {
   cancelOnUserAction: boolean;
   easing: (t: number) => number;
-  elementToScroll: Element | Window | null;
+  scrollEl: Element | Window | null;
   horizontalOffset: number;
   maxDuration: number;
   minDuration: number;
@@ -90,7 +90,7 @@ export interface IOptionsWithOffset extends IOptions {
 }
 
 export interface IUserOptions extends Partial<IOptions> {
-  elementToScroll?: Element | Window;
+  scrollEl?: Element | Window;
   top?: number;
   left?: number;
 }
@@ -177,9 +177,9 @@ class ScrollWindow {
 const defaultOptions: IOptions = {
   cancelOnUserAction: true,
   easing: EasingFunctions.easeOutCubic,
-  elementToScroll: isClientSide ? window : null, // Check for server side rendering
+  scrollEl: isClientSide ? window : null, // Check for server side rendering
   horizontalOffset: 0,
-  maxDuration: 3000,
+  maxDuration: 1000,
   minDuration: 250,
   speed: 500,
   verticalOffset: 0,
@@ -190,8 +190,6 @@ async function customScrollTo(
 ): Promise<boolean> {
   // Check for server rendering
   if (!isClientSide) {
-    // @ts-ignore
-    // If it still gets called on server, return Promise for API consistency
     return new Promise((resolve: (hasScrolledToPosition: boolean) => void) => {
       resolve(false); // Returning false on server
     });
@@ -200,15 +198,15 @@ async function customScrollTo(
     throw "Browser doesn't support Promises, and animated-scroll-to depends on it, please provide a polyfill.";
   }
 
-  let x: number;
-  let y: number;
   const options: IOptionsWithOffset = {
     ...defaultOptions,
     ...userOptions,
   };
+  let x = (options.left ?? 0) + options.horizontalOffset;
+  let y = (options.top ?? 0) + options.verticalOffset;
 
-  const isWindow = options.elementToScroll === window;
-  const isElement = !!(options.elementToScroll as Element).nodeName;
+  const isWindow = options.scrollEl === window;
+  const isElement = !!(options.scrollEl as Element).nodeName;
 
   if (!isWindow && !isElement) {
     throw "Element to scroll needs to be either window or DOM element.";
@@ -218,7 +216,7 @@ async function customScrollTo(
   // https://github.com/Stanko/animated-scroll-to/issues/55
   const scrollBehaviorElement: Element = isWindow
     ? document.documentElement
-    : (options.elementToScroll as Element);
+    : (options.scrollEl as Element);
   const scrollBehavior = getComputedStyle(
     scrollBehaviorElement,
   ).getPropertyValue("scroll-behavior");
@@ -232,19 +230,7 @@ async function customScrollTo(
   // Select the correct scrolling interface
   const elementToScroll = isWindow
     ? new ScrollWindow()
-    : new ScrollDomElement(options.elementToScroll as Element);
-
-  if (options.top || options.left) {
-    x = options.top ? options.top : elementToScroll.getHorizontalScroll();
-    y = options.left ? options.left : elementToScroll.getVerticalScroll();
-  } else {
-    // ERROR
-    throw "ScrollTo: Wrong function signature.";
-  }
-
-  // Add offsets
-  x += options.horizontalOffset;
-  y += options.verticalOffset;
+    : new ScrollDomElement(options.scrollEl as Element);
 
   // Horizontal scroll distance
   const maxHorizontalScroll = elementToScroll.getMaxHorizontalScroll();
@@ -290,6 +276,10 @@ async function customScrollTo(
     duration = options.maxDuration;
   }
 
+  const events = ["wheel", "touchstart", "keydown", "mousedown"];
+  // Prevent user actions handler
+  const preventDefaultHandler = (e: Event) => e.preventDefault();
+
   return new Promise((resolve: (hasScrolledToPosition: boolean) => void) => {
     // Scroll is already in place, nothing to do
     if (horizontalDistanceToScroll === 0 && verticalDistanceToScroll === 0) {
@@ -309,9 +299,6 @@ async function customScrollTo(
       resolve(false);
     };
 
-    // Prevent user actions handler
-    const preventDefaultHandler = (e: Event) => e.preventDefault();
-
     const handler = options.cancelOnUserAction
       ? cancelAnimation
       : preventDefaultHandler;
@@ -320,8 +307,6 @@ async function customScrollTo(
     const eventOptions: any = options.cancelOnUserAction
       ? { passive: true }
       : { passive: false };
-
-    const events = ["wheel", "touchstart", "keydown", "mousedown"];
 
     // Function to remove listeners after animation is finished
     const removeListeners = () => {
