@@ -11,7 +11,6 @@
     "clean": "concurrently \"pnpm run clean:root\" \"pnpm run clean:workspaces\"",
     "clean:root": "rm -rf ./node_modules",
     "clean:workspaces": "turbo run clean",
-    "build:eslint": "turbo run build --filter=@hj/eslint-config",
     "storybook:lib": "turbo run storybook --filter=@hj/react-lib",
     "storybook:playground": "turbo run storybook --filter=playground-nextjs",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""

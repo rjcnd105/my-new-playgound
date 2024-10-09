@@ -16,7 +16,6 @@ class ServiceStore {
     Service: T,
     ...params: ConstructorParameters<T>
   ): InstanceType<T> {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     this.#store.set(Service, new Service(...params))
     return this.get(Service)!

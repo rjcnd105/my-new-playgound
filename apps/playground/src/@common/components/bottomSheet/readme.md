@@ -3,7 +3,6 @@
 ```ts
 
 // 강제 element 렌더링 trick
-// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 root.current?.offsetHeight
 
 ```

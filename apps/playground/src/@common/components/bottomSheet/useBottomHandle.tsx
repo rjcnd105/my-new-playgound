@@ -19,7 +19,8 @@ export const useBottomHandle = ({ open, onClose }: UseHandleBarProps) => {
     const handleClose = () => {
       onClose()
       setIsMounted(false) // 언마운트 상태 변경
-      if (root.current) root.current.removeEventListener('transitionend', handleClose)
+      if (root.current)
+        root.current.removeEventListener('transitionend', handleClose)
     }
     root.current?.addEventListener('transitionend', handleClose)
     if (root.current) root.current.style.transform = 'translateY(0)'
@@ -35,7 +36,8 @@ export const useBottomHandle = ({ open, onClose }: UseHandleBarProps) => {
     const handleTouchMove = (() => {
       let prevY: number | undefined
       return (e: TouchEvent) => {
-        if (!root.current || !bottomSheetHeight.current || !isTouched.current) return
+        if (!root.current || !bottomSheetHeight.current || !isTouched.current)
+          return
         e.preventDefault()
         const touchY = e.touches[0].clientY
         const diffY = startY.current - touchY
@@ -66,7 +68,9 @@ export const useBottomHandle = ({ open, onClose }: UseHandleBarProps) => {
     }
 
     if (!bar.current) return
-    bar.current.addEventListener('touchstart', handleTouchStart, { passive: true })
+    bar.current.addEventListener('touchstart', handleTouchStart, {
+      passive: true,
+    })
     bar.current.addEventListener('touchmove', handleTouchMove)
     bar.current.addEventListener('touchend', handleTouchEnd, { passive: true })
     return () => {
@@ -86,7 +90,6 @@ export const useBottomHandle = ({ open, onClose }: UseHandleBarProps) => {
     console.log('isMounted', isMounted, root.current?.classList.toString())
 
     // 강제 element 렌더링 trick
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     root.current?.offsetHeight
     // 마운트 애니메이션 적용
     if (isMounted && root.current) {
@@ -117,5 +120,8 @@ export const useBottomHandle = ({ open, onClose }: UseHandleBarProps) => {
 }
 
 function isTouchDevice() {
-  return (typeof window !== undefined && 'ontouchstart' in window) || navigator.maxTouchPoints > 0
+  return (
+    (typeof window !== undefined && 'ontouchstart' in window) ||
+    navigator.maxTouchPoints > 0
+  )
 }
