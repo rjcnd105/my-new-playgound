@@ -7,7 +7,7 @@ const gray = {
   $300: '#E8E8E8',
   // border, divider
   $400: '#E0E0E0',
-  $470: '#CCCCCC',
+  $470: '#CCCCCC', 
   $500: '#C0C0C0',
   $550: '#ABABAB',
   // guide text
@@ -20,7 +20,7 @@ const gray = {
 
 const blue = {
   $100: '#ecf8ff',
-  $200: '#94DCFF',
+  $200: '#94DCFF', 
   $300: '#00ABFF',
   $400: '#1A8EF9',
   $500: '#00A5F5',
