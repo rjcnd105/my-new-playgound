@@ -9,6 +9,8 @@ export type Writeable<T> = { -readonly [P in keyof T]: T[P] };
 export type MapKeyOf<M> = M extends Map<infer K, unknown> ? K : never;
 export type MapValueOf<M> = M extends Map<unknown, infer K> ? K : never;
 
+
+
 // |를 &로
 export type UnionToIntersection<U> = (
   U extends any ? (k: U) => void : never
@@ -16,15 +18,31 @@ export type UnionToIntersection<U> = (
   ? I
   : never;
 
-type C<A> = { [K in keyof A]: A[K] };
+/**
+ * @example
+ * Combine<{a: "a"} & {b?: "b"}>
+ * // {a: "a", b?: "b"} 
+ */ 
+type Combine<A> = { [K in keyof A]: A[K] };
 
-export type Optional<A, B extends keyof A> = C<
+/**
+ * @example
+ * type A = Optional<{ a: number, b: string }, 'a'>;
+ * // { b: string, a?: boolean }
+ */
+export type Optional<A, B extends keyof A> = Combine<
   Omit<A, B> & { [K in B]?: A[K] }
 >;
 
-export type PartialRequired<A, B extends keyof A> = C<
+/**
+ * @example
+ * type A = Optional<{ a?: number, b?: string, c: boolean }, 'a'>;
+ * // { a: number, b?: string, c: boolean }
+ */ 
+export type PartialRequired<A, B extends keyof A> = Combine<
   Omit<A, B> & { [K in B]: A[K] }
 >;
+
 
 // 첫번째 파라미터 추출
 export type FirstParameter<T extends (...args: any) => any> = T extends (

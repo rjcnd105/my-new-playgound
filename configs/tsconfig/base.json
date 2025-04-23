@@ -10,7 +10,11 @@
     "preserveSymlinks": true,
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
+    "strictBindCallApply": true,
+
+    "isolatedDeclarations": true,
     "allowImportingTsExtensions": true,
+    "useDefineForClassFields": true,
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": false,
     "incremental": true,
@@ -21,13 +25,13 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitOverride": true,
     "sourceMap": true,
-    
+
     "declaration": true,
     "declarationMap": true,
     "noEmitOnError": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    
+
     "allowJs": true,
     "strict": true
   }
